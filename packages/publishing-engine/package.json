@@ -1,0 +1,10 @@
+{
+  "name": "@anunnaki/publishing-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Governed shared publishing primitives for Michael Noah and The General Counsel.",
+  "exports": { ".": "./src/index.mjs" },
+  "scripts": { "test": "node --test tests/*.test.mjs" },
+  "engines": { "node": ">=22" }
+}
