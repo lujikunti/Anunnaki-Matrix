@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anunnaki.live/schemas/publishing/content-object-v1.json",
+  "title": "ANK Publishing Engine Content Object V1",
+  "type": "object",
+  "required": ["id","product","content_type","title","slug","version","status","workflow_state","rights_status","provenance","release_status"],
+  "properties": {
+    "id": {"type":"string","minLength":1},
+    "product": {"enum":["mn","gc"]},
+    "content_type": {"type":"string","minLength":1},
+    "title": {"type":"string","minLength":1},
+    "subtitle": {"type":["string","null"]},
+    "slug": {"type":"string","minLength":1},
+    "version": {"type":"string","minLength":1},
+    "status": {"enum":["PLANNED","IN_PRODUCTION","BETA","COMPLETE","SUPERSEDED","ARCHIVED"]},
+    "workflow_state": {"enum":["DRAFT","EDITORIAL_REVIEW","LEGAL_REVIEW","CURRICULUM_REVIEW","DESIGN_QA","RIGHTS_REVIEW","ACCESSIBILITY_REVIEW","SECURITY_REVIEW","QA","RELEASE_CANDIDATE","RELEASE_APPROVED"]},
+    "rights_status": {"type":"string","minLength":1},
+    "provenance": {"type":"object"},
+    "asset_references": {"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "publication_date": {"type":["string","null"],"format":"date"},
+    "last_reviewed_date": {"type":["string","null"],"format":"date"},
+    "deep_link": {"type":["string","null"]},
+    "release_status": {
+      "type":"object",
+      "required":["content_complete","qa_complete","rights_cleared","security_cleared","accessibility_checked","release_approved","deployed","production_verified"],
+      "properties": {
+        "content_complete":{"type":"boolean"},"qa_complete":{"type":"boolean"},"rights_cleared":{"type":"boolean"},"security_cleared":{"type":"boolean"},
+        "accessibility_checked":{"type":"boolean"},"release_approved":{"type":"boolean"},"deployed":{"type":"boolean"},"production_verified":{"type":"boolean"}
+      }
+    },
+    "extensions": {
+      "type":"object",
+      "properties":{"mn":{"type":"object"},"gc":{"type":"object"}},
+      "additionalProperties":false
+    }
+  },
+  "additionalProperties":true
+}
