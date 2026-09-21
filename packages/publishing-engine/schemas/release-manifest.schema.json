@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anunnaki.live/schemas/publishing/release-manifest-v1.json",
+  "title":"ANK Publishing Engine Release Manifest V1",
+  "type":"object",
+  "required":["schema_version","engine_version","release_id","product","generated_at","content_versions","migration_state","test_state","known_defects","truth"],
+  "properties":{
+    "schema_version":{"const":"1.0.0"},
+    "engine_version":{"type":"string"},
+    "release_id":{"type":"string","minLength":1},
+    "product":{"enum":["mn","gc"]},
+    "git_sha":{"type":["string","null"]},
+    "build_id":{"type":["string","null"]},
+    "deployment_id":{"type":["string","null"]},
+    "generated_at":{"type":"string","format":"date-time"},
+    "content_versions":{"type":"array"},
+    "migration_state":{"type":"array"},
+    "test_state":{"type":"array"},
+    "known_defects":{"type":"array"},
+    "truth":{"type":"object"}
+  },
+  "additionalProperties":true
+}
