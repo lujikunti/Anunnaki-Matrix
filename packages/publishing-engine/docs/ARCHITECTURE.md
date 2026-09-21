@@ -35,3 +35,22 @@ MN and GC currently operate separate product databases. V1 does not merge them. 
 ## Vendoring during migration
 
 Until the engine is published as a separately versioned package with reliable CI distribution, product repositories may consume a pinned generated snapshot. The snapshot must carry the upstream repository, version and source commit. Product code must not hand-edit the vendored engine; changes originate here and are re-vendored deliberately.
+
+## Runtime primitives
+
+V1 also provides headless runtime contracts so products can share behavior without sharing appearance:
+
+- explicit RBAC + relationship/organisation ABAC decisions;
+- reader state for resume, unit completion, bookmarks, scalable text and reduced-motion preference;
+- provider-neutral verified commerce receipts;
+- entitlement conversion only through an explicit, replay-safe commercial policy;
+- privacy-minimised analytics events, with stricter MN child-data removal;
+- product-scoped relationship graph indexing;
+- command-centre summaries for failed gates, rights-blocked assets and complete-but-not-deployed content.
+
+These helpers are policy decisions, not substitutes for server/database enforcement. Product RLS, server authorization, webhook signature verification and human approval remain mandatory at their existing boundaries.
+
+## Recovery contract
+
+A production corpus is not considered recoverable merely because source control exists. Each product must retain evidence for database backup, source backup, asset backup, release rollback, a documented restore procedure and a tested recovery exercise.
+
