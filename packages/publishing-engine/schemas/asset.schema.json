@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anunnaki.live/schemas/publishing/asset-v1.json",
+  "title": "ANK Publishing Engine Asset V1",
+  "type":"object",
+  "required":["asset_id","product","owner","source","acquisition_method","rights_classification","release_clearance"],
+  "properties":{
+    "asset_id":{"type":"string","minLength":1},
+    "product":{"enum":["mn","gc"]},
+    "owner":{"type":"string","minLength":1},
+    "creator":{"type":["string","null"]},
+    "source":{"type":"string","minLength":1},
+    "acquisition_method":{"type":"string","minLength":1},
+    "licence":{"type":["string","null"]},
+    "permission":{"type":["string","null"]},
+    "territory":{"type":["string","null"]},
+    "duration":{"type":["string","null"]},
+    "attribution_required":{"type":"boolean"},
+    "attribution_text":{"type":["string","null"]},
+    "public_domain_basis":{"type":["string","null"]},
+    "restrictions":{"type":["string","array","null"]},
+    "evidence_document_reference":{"type":["string","null"]},
+    "commercial_use_status":{"type":["string","null"]},
+    "ai_rights":{"type":"object"},
+    "rights_classification":{"enum":["ORIGINAL","USER_OWNED","COMMISSIONED","LICENSED","PUBLIC_DOMAIN","OPEN_LICENSE","OFFICIAL_SOURCE","PERMISSION_GRANTED","RESTRICTED","RIGHTS_UNCLEAR"]},
+    "release_clearance":{"type":"boolean"},
+    "alt_text":{"type":["string","null"]},
+    "checksum":{"type":["string","null"]},
+    "version":{"type":["string","null"]}
+  },
+  "additionalProperties":true
+}
