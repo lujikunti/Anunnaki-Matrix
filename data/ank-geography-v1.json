@@ -1,0 +1,1154 @@
+{
+  "schema": "ank.geography.registry.v1",
+  "version": "1.0.0",
+  "updatedAt": "2026-09-21",
+  "fingerprint": "659adfbe1f05103e79c0844c9b2330c06539ad8dfd1d360dc60ecb42d3de44a2",
+  "purpose": "Canonical neutral geography registry shared by Michael Noah and The General Counsel. It is infrastructure, not a content library.",
+  "governance": {
+    "sourceOfTruth": true,
+    "countryPagesAreNotGeneratedFromRegistryAlone": true,
+    "noPoliticalAssumptionsInNavigation": true,
+    "languageIsManyToMany": true,
+    "statusVocabulary": [
+      "AVAILABLE",
+      "GROWING",
+      "PLANNED"
+    ],
+    "availabilityRule": "Product bindings determine whether substantive content exists. Registry presence alone never upgrades a place above PLANNED.",
+    "regionRule": "Regions are discovery/navigation groupings, not legal conclusions."
+  },
+  "coverage": {
+    "africaCatalogueBasis": "55 African Union member-state catalogue already used by GC; navigation subregions are ANK discovery groupings only.",
+    "africaPlaceCount": 55,
+    "internationalPolicy": "Seed only places with a real product reason. Broad international regions exist even when they contain no substantive ANK collection.",
+    "internationalSeed": [
+      "geo:GBR"
+    ]
+  },
+  "supportedFields": {
+    "place": [
+      "stable id",
+      "canonical/display name",
+      "region/subregion",
+      "jurisdiction identifiers",
+      "aliases",
+      "languages",
+      "currencies",
+      "time zones",
+      "relationships",
+      "neutral status treatment"
+    ],
+    "productOverlay": [
+      "availability",
+      "content relationships",
+      "rights/provenance",
+      "last reviewed",
+      "review/update hooks"
+    ]
+  },
+  "regions": [
+    {
+      "id": "africa",
+      "displayName": "Africa",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": false
+    },
+    {
+      "id": "africa-north",
+      "displayName": "North Africa",
+      "parentId": "africa",
+      "kind": "subregion",
+      "navigationOnly": true
+    },
+    {
+      "id": "africa-west",
+      "displayName": "West Africa",
+      "parentId": "africa",
+      "kind": "subregion",
+      "navigationOnly": true
+    },
+    {
+      "id": "africa-central",
+      "displayName": "Central Africa",
+      "parentId": "africa",
+      "kind": "subregion",
+      "navigationOnly": true
+    },
+    {
+      "id": "africa-east",
+      "displayName": "East Africa",
+      "parentId": "africa",
+      "kind": "subregion",
+      "navigationOnly": true
+    },
+    {
+      "id": "africa-southern",
+      "displayName": "Southern Africa",
+      "parentId": "africa",
+      "kind": "subregion",
+      "navigationOnly": true
+    },
+    {
+      "id": "europe",
+      "displayName": "Europe",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": true
+    },
+    {
+      "id": "asia",
+      "displayName": "Asia",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": true
+    },
+    {
+      "id": "middle-east",
+      "displayName": "Middle East",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": true
+    },
+    {
+      "id": "north-america",
+      "displayName": "North America",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": true
+    },
+    {
+      "id": "latin-america-caribbean",
+      "displayName": "Latin America & Caribbean",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": true
+    },
+    {
+      "id": "oceania",
+      "displayName": "Oceania",
+      "parentId": null,
+      "kind": "global-region",
+      "navigationOnly": true
+    }
+  ],
+  "places": [
+    {
+      "id": "geo:DZA",
+      "canonicalName": "Algeria",
+      "displayName": "Algeria",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "DZA",
+        "legalResearchKey": "DZA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:EGY",
+      "canonicalName": "Egypt",
+      "displayName": "Egypt",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "EGY",
+        "legalResearchKey": "EGY"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:LBY",
+      "canonicalName": "Libya",
+      "displayName": "Libya",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "LBY",
+        "legalResearchKey": "LBY"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MAR",
+      "canonicalName": "Morocco",
+      "displayName": "Morocco",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MAR",
+        "legalResearchKey": "MAR"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SDN",
+      "canonicalName": "Sudan",
+      "displayName": "Sudan",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SDN",
+        "legalResearchKey": "SDN"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:TUN",
+      "canonicalName": "Tunisia",
+      "displayName": "Tunisia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "TUN",
+        "legalResearchKey": "TUN"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:ESH",
+      "canonicalName": "Sahrawi Arab Democratic Republic / Western Sahara",
+      "displayName": "Sahrawi Arab Democratic Republic / Western Sahara",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-north",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "ESH",
+        "legalResearchKey": "ESH"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {
+        "neutralityNote": "Navigation metadata only. Legal, territorial or recognition questions require source-specific treatment."
+      }
+    },
+    {
+      "id": "geo:BEN",
+      "canonicalName": "Benin",
+      "displayName": "Benin",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "BEN",
+        "legalResearchKey": "BEN"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:BFA",
+      "canonicalName": "Burkina Faso",
+      "displayName": "Burkina Faso",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "BFA",
+        "legalResearchKey": "BFA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:CPV",
+      "canonicalName": "Cabo Verde",
+      "displayName": "Cabo Verde",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "CPV",
+        "legalResearchKey": "CPV"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:CIV",
+      "canonicalName": "Côte d’Ivoire",
+      "displayName": "Côte d’Ivoire",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "CIV",
+        "legalResearchKey": "CIV"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GMB",
+      "canonicalName": "The Gambia",
+      "displayName": "The Gambia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GMB",
+        "legalResearchKey": "GMB"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GHA",
+      "canonicalName": "Ghana",
+      "displayName": "Ghana",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GHA",
+        "legalResearchKey": "GHA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GIN",
+      "canonicalName": "Guinea",
+      "displayName": "Guinea",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GIN",
+        "legalResearchKey": "GIN"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GNB",
+      "canonicalName": "Guinea-Bissau",
+      "displayName": "Guinea-Bissau",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GNB",
+        "legalResearchKey": "GNB"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:LBR",
+      "canonicalName": "Liberia",
+      "displayName": "Liberia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "LBR",
+        "legalResearchKey": "LBR"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MLI",
+      "canonicalName": "Mali",
+      "displayName": "Mali",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MLI",
+        "legalResearchKey": "MLI"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MRT",
+      "canonicalName": "Mauritania",
+      "displayName": "Mauritania",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MRT",
+        "legalResearchKey": "MRT"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:NER",
+      "canonicalName": "Niger",
+      "displayName": "Niger",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "NER",
+        "legalResearchKey": "NER"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:NGA",
+      "canonicalName": "Nigeria",
+      "displayName": "Nigeria",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "NGA",
+        "legalResearchKey": "NGA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SEN",
+      "canonicalName": "Senegal",
+      "displayName": "Senegal",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SEN",
+        "legalResearchKey": "SEN"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SLE",
+      "canonicalName": "Sierra Leone",
+      "displayName": "Sierra Leone",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SLE",
+        "legalResearchKey": "SLE"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:TGO",
+      "canonicalName": "Togo",
+      "displayName": "Togo",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-west",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "TGO",
+        "legalResearchKey": "TGO"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:AGO",
+      "canonicalName": "Angola",
+      "displayName": "Angola",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "AGO",
+        "legalResearchKey": "AGO"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:CMR",
+      "canonicalName": "Cameroon",
+      "displayName": "Cameroon",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "CMR",
+        "legalResearchKey": "CMR"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:CAF",
+      "canonicalName": "Central African Republic",
+      "displayName": "Central African Republic",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "CAF",
+        "legalResearchKey": "CAF"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:TCD",
+      "canonicalName": "Chad",
+      "displayName": "Chad",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "TCD",
+        "legalResearchKey": "TCD"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:COG",
+      "canonicalName": "Congo Republic",
+      "displayName": "Congo Republic",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "COG",
+        "legalResearchKey": "COG"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:COD",
+      "canonicalName": "Democratic Republic of the Congo",
+      "displayName": "Democratic Republic of the Congo",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "COD",
+        "legalResearchKey": "COD"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GNQ",
+      "canonicalName": "Equatorial Guinea",
+      "displayName": "Equatorial Guinea",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GNQ",
+        "legalResearchKey": "GNQ"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GAB",
+      "canonicalName": "Gabon",
+      "displayName": "Gabon",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GAB",
+        "legalResearchKey": "GAB"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:STP",
+      "canonicalName": "São Tomé and Príncipe",
+      "displayName": "São Tomé and Príncipe",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-central",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "STP",
+        "legalResearchKey": "STP"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:BDI",
+      "canonicalName": "Burundi",
+      "displayName": "Burundi",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "BDI",
+        "legalResearchKey": "BDI"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:COM",
+      "canonicalName": "Comoros",
+      "displayName": "Comoros",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "COM",
+        "legalResearchKey": "COM"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:DJI",
+      "canonicalName": "Djibouti",
+      "displayName": "Djibouti",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "DJI",
+        "legalResearchKey": "DJI"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:ERI",
+      "canonicalName": "Eritrea",
+      "displayName": "Eritrea",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "ERI",
+        "legalResearchKey": "ERI"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:ETH",
+      "canonicalName": "Ethiopia",
+      "displayName": "Ethiopia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "ETH",
+        "legalResearchKey": "ETH"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:KEN",
+      "canonicalName": "Kenya",
+      "displayName": "Kenya",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "KEN",
+        "legalResearchKey": "KEN"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MDG",
+      "canonicalName": "Madagascar",
+      "displayName": "Madagascar",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MDG",
+        "legalResearchKey": "MDG"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MUS",
+      "canonicalName": "Mauritius",
+      "displayName": "Mauritius",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MUS",
+        "legalResearchKey": "MUS"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:RWA",
+      "canonicalName": "Rwanda",
+      "displayName": "Rwanda",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "RWA",
+        "legalResearchKey": "RWA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SYC",
+      "canonicalName": "Seychelles",
+      "displayName": "Seychelles",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SYC",
+        "legalResearchKey": "SYC"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SOM",
+      "canonicalName": "Somalia",
+      "displayName": "Somalia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SOM",
+        "legalResearchKey": "SOM"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SSD",
+      "canonicalName": "South Sudan",
+      "displayName": "South Sudan",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SSD",
+        "legalResearchKey": "SSD"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:TZA",
+      "canonicalName": "Tanzania",
+      "displayName": "Tanzania",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "TZA",
+        "legalResearchKey": "TZA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:UGA",
+      "canonicalName": "Uganda",
+      "displayName": "Uganda",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-east",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "UGA",
+        "legalResearchKey": "UGA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:BWA",
+      "canonicalName": "Botswana",
+      "displayName": "Botswana",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "BWA",
+        "legalResearchKey": "BWA"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:SWZ",
+      "canonicalName": "Eswatini",
+      "displayName": "Eswatini",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "SWZ",
+        "legalResearchKey": "SWZ"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:LSO",
+      "canonicalName": "Lesotho",
+      "displayName": "Lesotho",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "LSO",
+        "legalResearchKey": "LSO"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MWI",
+      "canonicalName": "Malawi",
+      "displayName": "Malawi",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MWI",
+        "legalResearchKey": "MWI"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:MOZ",
+      "canonicalName": "Mozambique",
+      "displayName": "Mozambique",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "MOZ",
+        "legalResearchKey": "MOZ"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:NAM",
+      "canonicalName": "Namibia",
+      "displayName": "Namibia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "NAM",
+        "legalResearchKey": "NAM"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:ZAF",
+      "canonicalName": "South Africa",
+      "displayName": "South Africa",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "ZAF",
+        "legalResearchKey": "ZAF"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:ZMB",
+      "canonicalName": "Zambia",
+      "displayName": "Zambia",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "ZMB",
+        "legalResearchKey": "ZMB"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:ZWE",
+      "canonicalName": "Zimbabwe",
+      "displayName": "Zimbabwe",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "africa",
+      "navigationSubregionId": "africa-southern",
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "ZWE",
+        "legalResearchKey": "ZWE"
+      },
+      "aliases": [],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    },
+    {
+      "id": "geo:GBR",
+      "canonicalName": "United Kingdom",
+      "displayName": "United Kingdom",
+      "entityType": "country-or-jurisdiction",
+      "continentRegionId": "europe",
+      "navigationSubregionId": null,
+      "jurisdictionIdentifiers": {
+        "isoAlpha3": "GBR",
+        "legalResearchKey": "GBR"
+      },
+      "aliases": [
+        "UK"
+      ],
+      "languages": [],
+      "currencies": [],
+      "timeZones": [],
+      "relationships": [],
+      "statusTreatment": {}
+    }
+  ],
+  "provenance": {
+    "africaJurisdictionNames": "Derived from the governed GC Doing Business in Africa catalogue.",
+    "navigationSubregions": "ANK discovery groupings; deliberately not treated as legal or political classification.",
+    "internationalSeed": "Explicit architecture demand only; no global encyclopedia population."
+  }
+}
