@@ -20,6 +20,38 @@ const env = {
 };
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function actionParams(fields) {
+  const params = new URLSearchParams();
+  if (Array.isArray(fields)) {
+    for (const field of fields) {
+      if (field?.name && field.value != null) params.append(field.name, String(field.value));
+    }
+  } else if (fields && typeof fields === "object") {
+    for (const [name, value] of Object.entries(fields)) {
+      if (value != null) params.append(name, String(value));
+    }
+  }
+  return params;
+}
+
+async function executeRedirectAction(action) {
+  if (!action?.url) throw new Error("Peach PayShap create response did not expose the required redirect action.");
+  const method = String(action.method ?? "GET").toUpperCase();
+  const params = actionParams(action.fields);
+  if (method === "GET") {
+    const url = new URL(action.url);
+    for (const [key, value] of params) url.searchParams.append(key, value);
+    return fetch(url, { method: "GET", redirect: "manual" });
+  }
+  return fetch(action.url, {
+    method,
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: params,
+    redirect: "manual"
+  });
+}
+
 const stamp = Date.now();
 const pay = createAnkPay({
   provider: createPeachPayShapSandboxAdapter({ env }),
@@ -42,10 +74,16 @@ if (created.status === "succeeded") {
 }
 if (!created.providerReference) throw new Error("Peach sandbox did not return a provider reference.");
 
+const redirectResponse = await executeRedirectAction(created.action);
+if (redirectResponse.status >= 500) {
+  throw new Error(`Peach PayShap redirect action failed with HTTP ${redirectResponse.status}.`);
+}
+
+await sleep(5000);
 let verified = await pay.verifyPayment({ paymentId: created.id });
 if (verified.status !== "succeeded") {
   // Peach documents two status queries per minute per transaction. This is the only retry.
-  await sleep(10000);
+  await sleep(30000);
   verified = await pay.verifyPayment({ paymentId: created.id });
 }
 
@@ -64,5 +102,6 @@ console.log(JSON.stringify({
   paymentId: verified.id,
   providerReference: verified.providerReference,
   settlementVerified: Boolean(verified.settlementVerifiedAt),
-  entitlementState: verified.entitlement.state
+  entitlementState: verified.entitlement.state,
+  redirectStatus: redirectResponse.status
 }, null, 2));
