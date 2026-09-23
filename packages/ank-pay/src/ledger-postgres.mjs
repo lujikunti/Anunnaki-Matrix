@@ -17,6 +17,7 @@ function camelPayment(row) {
     subject: { type: row.subject_type, id: row.subject_id },
     status: row.status,
     providerCode: row.provider_code,
+    providerAction: row.provider_action ?? null,
     metadata: row.metadata ?? {},
     statusVerifiedAt: row.status_verified_at,
     settlementVerifiedAt: row.settlement_verified_at,
@@ -80,9 +81,10 @@ export function createPostgresLedger({ query }) {
     async recordProviderResult(paymentId, { phase, result }) {
       const eventKey = `${phase}:${result.providerCode ?? "none"}:${result.providerReference ?? "none"}:${result.providerTimestamp ?? randomUUID()}`;
       const rows = await run(
-        `select (ank_pay_sandbox.record_provider_result($1,$2,$3,$4,$5,$6,$7,$8::timestamptz)).*`,
+        `select (ank_pay_sandbox.record_provider_result($1,$2,$3,$4,$5,$6,$7,$8::timestamptz,$9::jsonb)).*`,
         [paymentId, eventKey, `provider.${phase}`, result.status, result.providerCode ?? null,
-         result.providerReference ?? null, result.merchantTransactionId ?? null, result.providerTimestamp ?? null]
+         result.providerReference ?? null, result.merchantTransactionId ?? null, result.providerTimestamp ?? null,
+         JSON.stringify(result.action ?? null)]
       );
       return camelPayment(rows[0]);
     },
