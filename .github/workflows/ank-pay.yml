@@ -1,0 +1,27 @@
+name: ANK Pay
+
+on:
+  pull_request:
+    paths:
+      - 'packages/ank-pay/**'
+      - 'api/ank-pay/**'
+      - 'tools/validate-ank-pay.mjs'
+      - '.github/workflows/ank-pay.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'packages/ank-pay/**'
+      - 'api/ank-pay/**'
+      - 'tools/validate-ank-pay.mjs'
+      - '.github/workflows/ank-pay.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate ANK Pay sandbox boundary
+        run: node tools/validate-ank-pay.mjs
