@@ -1,0 +1,11 @@
+{
+  "name": "@ank/pie",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/validate-growth.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
