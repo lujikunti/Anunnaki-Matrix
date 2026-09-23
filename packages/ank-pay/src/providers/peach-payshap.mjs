@@ -67,11 +67,17 @@ export function merchantTransactionId(reference) {
 }
 
 export function mapPeachResultCode(code, hasRedirect = false) {
-  if (code === "000.000.000" || code === "000.100.110") return "succeeded";
+  if (/^(000\.000\.|000\.100\.1|000\.[36]|000\.400\.[12]10)/.test(code ?? "")) return "succeeded";
   if (code === "100.396.104" || code === "100.380.501") return "expired";
   if (code === "100.396.101" || /^800\./.test(code ?? "") || /^900\./.test(code ?? "")) return "failed";
   if (hasRedirect || code === "000.200.000") return "pending";
   return "unknown";
+}
+
+function moneyToMinor(amount) {
+  if (amount == null || amount === "") return null;
+  const number = Number(amount);
+  return Number.isFinite(number) ? Math.round(number * 100) : null;
 }
 
 function normalizePeachResponse(raw, fallbackMerchantTransactionId) {
@@ -89,6 +95,11 @@ function normalizePeachResponse(raw, fallbackMerchantTransactionId) {
     status: mapPeachResultCode(providerCode, Boolean(redirect)),
     providerCode,
     providerDescription: raw?.result?.description ?? null,
+    providerTimestamp: raw?.timestamp ?? null,
+    amountMinor: moneyToMinor(raw?.amount),
+    currency: raw?.currency ?? null,
+    paymentBrand: raw?.paymentBrand ?? null,
+    paymentType: raw?.paymentType ?? null,
     action: redirect
   };
 }
@@ -100,7 +111,7 @@ export function createPeachPayShapSandboxAdapter(options = {}) {
   if (baseUrl !== PEACH_PAYSHAP_SANDBOX_BASE_URL) {
     throw new AnkPayError(
       "SANDBOX_ONLY",
-      "The v0.1 Peach adapter is intentionally locked to the official sandbox endpoint.",
+      "The ANK Pay Peach prototype is intentionally locked to the official sandbox endpoint.",
       { httpStatus: 500, provider: "peach-payshap-sandbox" }
     );
   }
@@ -122,7 +133,7 @@ export function createPeachPayShapSandboxAdapter(options = {}) {
     async createPaymentRequest(input) {
       const request = validatePaymentRequest(input);
       const authentication = credentialsFromEnv(env);
-      const transactionId = merchantTransactionId(request.reference);
+      const transactionId = merchantTransactionId(request.idempotencyKey ?? request.reference);
       const body = {
         authentication,
         merchantTransactionId: transactionId,
