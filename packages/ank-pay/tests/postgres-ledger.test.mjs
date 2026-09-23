@@ -7,7 +7,7 @@ test("postgres ledger only uses parameterised queries and private schema", async
   const row={
     id:"11111111-1111-4111-8111-111111111111",idempotency_key:"idem-12345678",request_fingerprint:"fp",provider:"fake",
     provider_reference:null,merchant_transaction_id:null,amount_minor:"100",currency:"ZAR",reference:"ref",product_key:"p",
-    subject_type:"family",subject_id:"f",status:"created",provider_code:null,metadata:{},status_verified_at:null,
+    subject_type:"family",subject_id:"f",status:"created",provider_code:null,provider_action:null,metadata:{},status_verified_at:null,
     settlement_verified_at:null,created_at:"2026-09-23T00:00:00Z",updated_at:"2026-09-23T00:00:00Z"
   };
   const query=async(text,params)=>{
