@@ -1,21 +1,25 @@
-import { assertProviderAdapter } from "./contract.mjs";
+import { createAnkPay } from "./engine.mjs";
+import { createMemoryLedger } from "./ledger-memory.mjs";
 import { createPeachPayShapSandboxAdapter } from "./providers/peach-payshap.mjs";
 
-export function createAnkPay({ provider }) {
-  const adapter = assertProviderAdapter(provider);
-  return Object.freeze({
-    providerId: adapter.id,
-    capabilities: adapter.capabilities ?? {},
-    createPaymentRequest: (input) => adapter.createPaymentRequest(input),
-    getPaymentStatus: (input) => adapter.getPaymentStatus(input)
+export { createAnkPay } from "./engine.mjs";
+export { createMemoryLedger } from "./ledger-memory.mjs";
+export { createPostgresLedger } from "./ledger-postgres.mjs";
+
+export function createDefaultSandboxAnkPay(options = {}) {
+  return createAnkPay({
+    provider: createPeachPayShapSandboxAdapter(options),
+    ledger: options.ledger ?? createMemoryLedger()
   });
 }
 
-export function createDefaultSandboxAnkPay(options = {}) {
-  return createAnkPay({ provider: createPeachPayShapSandboxAdapter(options) });
-}
-
-export { AnkPayError, validatePaymentRequest } from "./contract.mjs";
+export {
+  AnkPayError,
+  ANK_PAY_STATUSES,
+  validatePaymentRequest,
+  validatePaymentIntent,
+  paymentIntentFingerprint
+} from "./contract.mjs";
 export {
   createPeachPayShapSandboxAdapter,
   PEACH_PAYSHAP_BANKS,
