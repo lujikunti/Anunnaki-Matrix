@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_GROWTH_AGENT_V1",
+  "agent": {
+    "agent_id": "ank-growth",
+    "display_name": "ANK Growth",
+    "role_class": "growth",
+    "autonomy_ceiling": "EXECUTE_REVERSIBLE",
+    "capabilities": [
+      "market_signal_scan",
+      "search_opportunity_research",
+      "seo_brief",
+      "founder_content_draft",
+      "content_repurposing",
+      "distribution_plan",
+      "partner_map",
+      "community_opportunity_map",
+      "directory_opportunity_map",
+      "event_opportunity_map",
+      "referral_program_design",
+      "inbound_lead_qualification",
+      "attribution_analysis",
+      "growth_experiment_proposal",
+      "case_study_draft",
+      "external_message",
+      "public_publication"
+    ],
+    "human_gates": [
+      "external_message",
+      "public_publication"
+    ],
+    "forbidden_actions": [
+      "cold_email",
+      "cold_dm",
+      "unsolicited_bulk_message",
+      "scrape_personal_contact_data",
+      "fake_review",
+      "astroturfing",
+      "impersonation"
+    ]
+  },
+  "distribution_mode": "PULL_FIRST",
+  "cold_outbound_default": "DISABLED",
+  "execution_boundary": {
+    "autonomous": [
+      "public_market_research",
+      "internal_drafting",
+      "content_repurposing",
+      "channel_planning",
+      "partner_mapping",
+      "community_mapping",
+      "inbound_qualification",
+      "attribution_analysis",
+      "experiment_proposals"
+    ],
+    "human_gate": [
+      "external_message",
+      "public_publication",
+      "paid_spend",
+      "customer_identifiable_case_study",
+      "production_release"
+    ]
+  },
+  "shared_channels": [
+    "search_and_evergreen",
+    "founder_led_publishing",
+    "product_demos",
+    "observatory_evidence",
+    "communities",
+    "partnerships",
+    "referrals",
+    "events_and_webinars",
+    "directories_and_ecosystems",
+    "earned_media",
+    "product_led_sharing",
+    "opt_in_nurture"
+  ],
+  "north_star_metrics": [
+    "qualified_inbound",
+    "organic_nonbranded_discovery",
+    "demo_start",
+    "activation",
+    "referral_activation",
+    "partner_sourced_demand",
+    "content_assisted_conversion",
+    "paid_conversion",
+    "retention"
+  ]
+}
