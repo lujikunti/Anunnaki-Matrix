@@ -19,7 +19,8 @@ function makeProvider({ createStatus = "pending", verifyStatus = "succeeded", ve
         providerCode: createStatus === "succeeded" ? "000.100.110" : "000.200.000",
         amountMinor: 25000,
         currency: "ZAR",
-        paymentBrand: "PAYSHAP"
+        paymentBrand: "PAYSHAP",
+        action: { type: "redirect", url: "https://sandbox.example/continue", method: "GET", fields: [] }
       };
     },
     async getPaymentStatus() {
@@ -57,6 +58,7 @@ test("idempotent replay never creates a second provider payment", async () => {
   const replay = await pay.createPayment(intent);
   assert.equal(first.id, replay.id);
   assert.equal(replay.replayed, true);
+  assert.equal(replay.action?.type, "redirect");
   assert.equal(provider.counts.creates, 1);
 });
 
@@ -75,6 +77,7 @@ test("provider create success is not settlement until independently verified", a
   const created = await pay.createPayment(intent);
   assert.equal(created.status, "awaiting_verification");
   assert.equal(created.settlementVerifiedAt, null);
+  assert.equal(created.action?.type, "redirect");
   assert.equal((await pay.listEntitlements(created.id)).length, 0);
   const verified = await pay.verifyPayment({ paymentId: created.id });
   assert.equal(verified.status, "succeeded");
