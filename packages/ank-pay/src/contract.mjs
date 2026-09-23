@@ -1,9 +1,13 @@
+import { createHash, randomUUID } from "node:crypto";
+
 export const ANK_PAY_STATUSES = Object.freeze([
   "created",
   "pending",
+  "awaiting_verification",
   "succeeded",
   "failed",
   "expired",
+  "verification_failed",
   "unknown"
 ]);
 
@@ -33,6 +37,14 @@ export function assertProviderAdapter(adapter) {
   return adapter;
 }
 
+function requireToken(value, name, min = 3, max = 160) {
+  const token = String(value ?? "").trim();
+  if (token.length < min || token.length > max) {
+    throw new AnkPayError(`INVALID_${name.toUpperCase()}`, `${name} must contain ${min} to ${max} characters.`, { httpStatus: 400 });
+  }
+  return token;
+}
+
 export function validatePaymentRequest(input) {
   if (!input || typeof input !== "object") {
     throw new AnkPayError("INVALID_REQUEST", "Payment request body is required.", { httpStatus: 400 });
@@ -48,11 +60,7 @@ export function validatePaymentRequest(input) {
     throw new AnkPayError("UNSUPPORTED_CURRENCY", "The PayShap prototype supports ZAR only.", { httpStatus: 400 });
   }
 
-  const reference = String(input.reference ?? "").trim();
-  if (reference.length < 3 || reference.length > 120) {
-    throw new AnkPayError("INVALID_REFERENCE", "reference must contain 3 to 120 characters.", { httpStatus: 400 });
-  }
-
+  const reference = requireToken(input.reference, "reference", 3, 120);
   const returnUrl = String(input.returnUrl ?? "").trim();
   let parsed;
   try {
@@ -74,6 +82,35 @@ export function validatePaymentRequest(input) {
       bank: String(payer.bank ?? "").trim().toUpperCase(),
       cellphone: String(payer.cellphone ?? "").trim()
     },
+    idempotencyKey: input.idempotencyKey ? requireToken(input.idempotencyKey, "idempotencyKey", 8, 160) : undefined,
     metadata: input.metadata && typeof input.metadata === "object" ? input.metadata : {}
   };
+}
+
+export function validatePaymentIntent(input) {
+  const request = validatePaymentRequest(input);
+  const idempotencyKey = requireToken(input.idempotencyKey, "idempotencyKey", 8, 160);
+  const productKey = requireToken(input.productKey, "productKey", 2, 120);
+  const subject = input.subject ?? {};
+  const subjectType = requireToken(subject.type, "subjectType", 2, 40);
+  const subjectId = requireToken(subject.id, "subjectId", 2, 160);
+  return { ...request, idempotencyKey, productKey, subject: { type: subjectType, id: subjectId } };
+}
+
+export function paymentIntentFingerprint(intent, providerId) {
+  const normalized = JSON.stringify({
+    providerId,
+    amountMinor: intent.amountMinor,
+    currency: intent.currency,
+    reference: intent.reference,
+    productKey: intent.productKey,
+    subject: intent.subject,
+    payerBank: intent.payer.bank,
+    payerFingerprint: createHash("sha256").update(String(intent.payer.cellphone)).digest("hex")
+  });
+  return createHash("sha256").update(normalized).digest("hex");
+}
+
+export function newPaymentId() {
+  return randomUUID();
 }
