@@ -14,6 +14,7 @@ function publicPayment(payment, { replayed = false, entitlement = null } = {}) {
     productKey: payment.productKey,
     subject: payment.subject,
     settlementVerifiedAt: payment.settlementVerifiedAt,
+    action: payment.providerAction ?? null,
     replayed,
     entitlement
   };
