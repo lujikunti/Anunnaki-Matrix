@@ -6,6 +6,7 @@ on:
       - 'packages/ank-pay/**'
       - 'api/ank-pay/**'
       - 'tools/validate-ank-pay.mjs'
+      - 'tools/e2e-ank-pay-peach.mjs'
       - '.github/workflows/ank-pay.yml'
   push:
     branches: [main]
@@ -13,6 +14,7 @@ on:
       - 'packages/ank-pay/**'
       - 'api/ank-pay/**'
       - 'tools/validate-ank-pay.mjs'
+      - 'tools/e2e-ank-pay-peach.mjs'
       - '.github/workflows/ank-pay.yml'
 
 jobs:
@@ -23,5 +25,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate ANK Pay sandbox boundary
+      - name: Validate ANK Pay v0.2 safety boundary
         run: node tools/validate-ank-pay.mjs
+
+  peach-sandbox-e2e:
+    if: github.event_name == 'pull_request'
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run fake-money Peach PayShap E2E
+        run: node tools/e2e-ank-pay-peach.mjs
