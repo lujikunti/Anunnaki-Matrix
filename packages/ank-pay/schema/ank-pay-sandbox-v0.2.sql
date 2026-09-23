@@ -16,6 +16,7 @@ create table if not exists ank_pay_sandbox.payments (
   subject_id text not null,
   status text not null check (status in ('created','pending','awaiting_verification','succeeded','failed','expired','verification_failed','unknown')),
   provider_code text,
+  provider_action jsonb,
   metadata jsonb not null default '{}'::jsonb,
   status_verified_at timestamptz,
   settlement_verified_at timestamptz,
@@ -148,7 +149,8 @@ create or replace function ank_pay_sandbox.record_provider_result(
   p_provider_code text,
   p_provider_reference text,
   p_merchant_transaction_id text,
-  p_provider_timestamp timestamptz default null
+  p_provider_timestamp timestamptz default null,
+  p_provider_action jsonb default null
 ) returns ank_pay_sandbox.payments
 language plpgsql
 security invoker
@@ -173,6 +175,7 @@ begin
   set provider_reference = coalesce(provider_reference, p_provider_reference),
       merchant_transaction_id = coalesce(merchant_transaction_id, p_merchant_transaction_id),
       provider_code = coalesce(p_provider_code, provider_code),
+      provider_action = coalesce(p_provider_action, provider_action),
       status = case
         when status='succeeded' then 'succeeded'
         when p_reported_status='succeeded' then 'awaiting_verification'
