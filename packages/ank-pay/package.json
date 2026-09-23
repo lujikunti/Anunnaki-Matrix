@@ -1,6 +1,7 @@
 {
   "name": "@ank/pay",
   "version": "0.1.0",
+  "description": "Provider-neutral ANK payment orchestration with a sandbox-first PayShap adapter.",
   "private": true,
   "type": "module",
   "scripts": {
