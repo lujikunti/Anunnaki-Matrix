@@ -40,6 +40,7 @@ export function createMemoryLedger({ clock = () => new Date() } = {}) {
         providerReference: null,
         merchantTransactionId: null,
         providerCode: null,
+        providerAction: null,
         status: "created",
         statusVerifiedAt: null,
         settlementVerifiedAt: null,
@@ -65,6 +66,7 @@ export function createMemoryLedger({ clock = () => new Date() } = {}) {
       payment.providerReference = result.providerReference ?? payment.providerReference;
       payment.merchantTransactionId = result.merchantTransactionId ?? payment.merchantTransactionId;
       payment.providerCode = result.providerCode ?? payment.providerCode;
+      payment.providerAction = result.action ?? payment.providerAction;
       if (payment.status !== "succeeded") {
         payment.status = result.status === "succeeded" ? "awaiting_verification" : result.status;
       }
