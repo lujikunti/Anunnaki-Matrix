@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "node tests/validate-growth.mjs"
+    "test": "node tests/validate-growth.mjs && node tests/validate-operators.mjs"
   },
   "engines": {
     "node": ">=22"
