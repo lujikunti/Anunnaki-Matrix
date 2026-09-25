@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+
+const fail=(m)=>{throw new Error('ANK Operator School QA: '+m)};
+const school=JSON.parse(fs.readFileSync(new URL('../operators/operator-school-v1.json', import.meta.url),'utf8'));
+const revenue=JSON.parse(fs.readFileSync(new URL('../operators/revenue-operator-v1.json', import.meta.url),'utf8'));
+if(school.policy_id!=='ANK_OPERATOR_SCHOOL_V1') fail('wrong policy id');
+if(school.product_language?.canonical_term!=='ANK Operator') fail('Operator is not canonical');
+if(!String(school.product_language?.legacy_interop_term||'').includes('Twin')) fail('legacy federation compatibility boundary missing');
+for(const k of ['EXECUTE','SUPERVISED_EXECUTE','HUMAN_GATE']) if(!school.autonomy_classes?.[k]) fail('missing autonomy class '+k);
+if((school.shared_roles||[]).length<15) fail('shared corporate role catalogue too small');
+if((school.mn_roles||[]).length<10) fail('MN role catalogue too small');
+if((school.gc_roles||[]).length<15) fail('GC role catalogue too small');
+for(const gate of ['external_message','pricing_change','contract_execution','production_release']) if(!school.universal_human_gates.includes(gate)) fail('missing universal human gate '+gate);
+for(const x of ['impersonate_human','bypass_human_gate','expose_cross_tenant_data','claim_professional_licence_or_authority']) if(!school.universal_forbidden_actions.includes(x)) fail('missing forbidden action '+x);
+if(revenue.execution_agent_ref!=='ank-growth') fail('Revenue Operator must reuse governed ANK Growth execution agent');
+if(revenue.status!=='APPRENTICE') fail('Revenue Operator must not self-graduate');
+for(const gate of ['external_message','pricing_change','contract_execution']) if(!revenue.human_gates.includes(gate)) fail('Revenue Operator missing gate '+gate);
+for(const x of ['no_source_code_transfer','no_cold_email','no_external_message_without_human_approval']) if(!revenue.first_sale_constraints.includes(x)) fail('Revenue constraint missing '+x);
+if(revenue.success_metrics.includes('likes')||revenue.success_metrics.includes('followers')) fail('vanity metric leaked into success criteria');
+console.log('ANK Operator School QA passed');
