@@ -1,0 +1,509 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_OPERATOR_PROFILES_V1",
+  "architecture_rule": "Operator profiles are presentation/training mappings over ANK PIE. They create no agent, worker, trust stage, promotion system or execution authority.",
+  "trust_authority": {
+    "policy_id": "ANK_AGENT_APPRENTICESHIP_V1",
+    "stages": [
+      "SHADOW",
+      "SUPERVISED",
+      "AUTONOMOUS_REVERSIBLE"
+    ],
+    "principle": "Trust is earned per capability from observed evidence, not inherited from an Operator title."
+  },
+  "product_language": {
+    "canonical_term": "ANK Operator",
+    "legacy_federation_term": "Twin",
+    "legacy_rule": "Legacy Twin language may remain only inside existing federation compatibility contracts."
+  },
+  "profiles": [
+    {
+      "profile_id": "systems_architect",
+      "display_name": "Systems Architect Operator",
+      "agent_refs": [
+        "ank-architect",
+        "ank-audit",
+        "ank-red-team"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "software_engineer",
+      "display_name": "Software Engineer Operator",
+      "agent_refs": [
+        "ank-build",
+        "ank-red-team"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "qa_red_team",
+      "display_name": "QA / Red Team Operator",
+      "agent_refs": [
+        "ank-red-team",
+        "ank-audit"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "security",
+      "display_name": "Security Operator",
+      "agent_refs": [
+        "ank-shield",
+        "ank-red-team",
+        "ank-audit"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "release_devops",
+      "display_name": "Release / DevOps Operator",
+      "agent_refs": [
+        "ank-release",
+        "ank-red-team"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "product_manager",
+      "display_name": "Product Manager Operator",
+      "agent_refs": [
+        "ank-product",
+        "ank-observatory"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "ux_product_design",
+      "display_name": "UX / Product Design Operator",
+      "agent_refs": [
+        "ank-design",
+        "ank-product"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "research",
+      "display_name": "Research Operator",
+      "agent_refs": [
+        "ank-scout",
+        "ank-observatory"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "content_editor",
+      "display_name": "Content Editor Operator",
+      "agent_refs": [
+        "ank-press",
+        "ank-chronicle"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "growth_marketing",
+      "display_name": "Growth / Marketing Operator",
+      "agent_refs": [
+        "ank-growth",
+        "ank-press"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "revenue",
+      "display_name": "Revenue Operator",
+      "agent_refs": [
+        "ank-growth",
+        "ank-desk",
+        "ank-observatory"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ],
+      "training_track": "revenue_v1"
+    },
+    {
+      "profile_id": "customer_success",
+      "display_name": "Customer Success Operator",
+      "agent_refs": [
+        "ank-desk",
+        "ank-observatory",
+        "ank-chronicle"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "operations",
+      "display_name": "Operations Operator",
+      "agent_refs": [
+        "ank-desk",
+        "ank-chronicle",
+        "ank-observatory"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "audit",
+      "display_name": "Audit Operator",
+      "agent_refs": [
+        "ank-audit",
+        "ank-red-team"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "knowledge_documentation",
+      "display_name": "Knowledge / Documentation Operator",
+      "agent_refs": [
+        "ank-chronicle",
+        "ank-press"
+      ],
+      "product_scope": [
+        "ANK",
+        "MN",
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "mn_curriculum",
+      "display_name": "Curriculum Operator",
+      "agent_refs": [
+        "mn-curriculum",
+        "mn-learning-evidence"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_assessment",
+      "display_name": "Assessment Operator",
+      "agent_refs": [
+        "mn-assessment",
+        "mn-learning-evidence"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_tutor",
+      "display_name": "Tutor Operator",
+      "agent_refs": [
+        "mn-tutor",
+        "mn-interest"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_learning_support",
+      "display_name": "Learning Support Operator",
+      "agent_refs": [
+        "mn-accessibility",
+        "mn-tutor",
+        "mn-child-safety"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_homeschool_operations",
+      "display_name": "Homeschool Operations Operator",
+      "agent_refs": [
+        "mn-homeschool",
+        "mn-learning-evidence",
+        "ank-chronicle"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_parent_success",
+      "display_name": "Parent Success Operator",
+      "agent_refs": [
+        "mn-family",
+        "ank-desk",
+        "ank-observatory"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_visual_learning",
+      "display_name": "Visual Learning Operator",
+      "agent_refs": [
+        "ank-design",
+        "mn-interest",
+        "ank-press"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_school_implementation",
+      "display_name": "School Implementation Operator",
+      "agent_refs": [
+        "mn-homeschool",
+        "ank-desk",
+        "ank-product"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "mn_partnerships",
+      "display_name": "Education Partnerships Operator",
+      "agent_refs": [
+        "ank-growth",
+        "ank-desk"
+      ],
+      "product_scope": [
+        "MN"
+      ]
+    },
+    {
+      "profile_id": "gc_operations",
+      "display_name": "GC Operations Operator",
+      "agent_refs": [
+        "gc-legal-ops",
+        "ank-desk",
+        "ank-chronicle"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_legal_intake",
+      "display_name": "Legal Intake Operator",
+      "agent_refs": [
+        "gc-legal-ops",
+        "gc-due-diligence"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_contract_manager",
+      "display_name": "Contract Manager Operator",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-legal-ops"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_commercial_manager",
+      "display_name": "Commercial Manager Operator",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-tender",
+        "gc-legal-ops"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_legal_research",
+      "display_name": "Legal Research Operator",
+      "agent_refs": [
+        "gc-authority-researcher",
+        "gc-citation-verifier",
+        "gc-jurisdiction-mapper"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_contract_review",
+      "display_name": "Contract Review Operator",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-clause-engineer",
+        "gc-citation-verifier"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_matter_manager",
+      "display_name": "Matter Manager Operator",
+      "agent_refs": [
+        "gc-legal-ops",
+        "gc-due-diligence",
+        "ank-chronicle"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_tender_bid",
+      "display_name": "Tender / Bid Operator",
+      "agent_refs": [
+        "gc-tender",
+        "ank-growth",
+        "ank-desk"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_compliance",
+      "display_name": "Compliance Operator",
+      "agent_refs": [
+        "gc-regulatory-monitor",
+        "gc-authority-researcher",
+        "ank-audit"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_document_control",
+      "display_name": "Document Control Operator",
+      "agent_refs": [
+        "ank-chronicle",
+        "gc-legal-ops"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    },
+    {
+      "profile_id": "gc_legal_publishing",
+      "display_name": "Legal Publishing Operator",
+      "agent_refs": [
+        "gc-red-note-publisher",
+        "gc-professional-learning",
+        "ank-press"
+      ],
+      "product_scope": [
+        "GC"
+      ]
+    }
+  ],
+  "training_tracks": {
+    "revenue_v1": {
+      "agent_ref": "ank-growth",
+      "purpose": "Extend ANK Growth into supervised revenue work without creating a new agent.",
+      "capability_curriculum": [
+        "buyer_problem_map",
+        "discovery_brief",
+        "demo_plan",
+        "objection_response_draft",
+        "proposal_draft",
+        "commercial_package_draft",
+        "negotiation_simulation",
+        "onboarding_handoff",
+        "retention_signal_analysis"
+      ],
+      "existing_capabilities_reused": [
+        "market_signal_scan",
+        "partner_map",
+        "inbound_lead_qualification",
+        "attribution_analysis",
+        "case_study_draft"
+      ],
+      "simulations": [
+        "skeptical_cfo",
+        "privacy_officer",
+        "discount_hunter",
+        "build_it_ourselves",
+        "ip_extraction_attempt",
+        "unsupported_feature_request",
+        "free_bespoke_pilot_request",
+        "confidentiality_objection",
+        "ai_reliability_objection"
+      ],
+      "human_gates": [
+        "external_message",
+        "public_publication",
+        "paid_spend",
+        "pricing_change",
+        "contract_execution",
+        "customer_identifiable_case_study"
+      ],
+      "forbidden": [
+        "cold_email",
+        "cold_dm",
+        "unsolicited_bulk_message",
+        "scrape_personal_contact_data",
+        "impersonation",
+        "source_code_transfer",
+        "invented_testimonial",
+        "invented_capability"
+      ],
+      "graduation_note": "Capability trust remains governed only by ANK_AGENT_APPRENTICESHIP_V1; this profile does not promote or authorize execution."
+    }
+  }
+}
