@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+const fail=(m)=>{throw new Error('ANK Operator Profiles QA: '+m)};
+const p=JSON.parse(fs.readFileSync(new URL('../operators/operator-profiles-v1.json', import.meta.url),'utf8'));
+const g=JSON.parse(fs.readFileSync(new URL('../agents/ank-growth-v1.json', import.meta.url),'utf8'));
+if(p.policy_id!=='ANK_OPERATOR_PROFILES_V1')fail('wrong profile policy id');
+if(!/create no agent, worker, trust stage, promotion system or execution authority/i.test(p.architecture_rule))fail('duplicate-engine boundary missing');
+if(p.trust_authority?.policy_id!=='ANK_AGENT_APPRENTICESHIP_V1')fail('PIE apprenticeship is not sole trust authority');
+if(JSON.stringify(p).includes('OPERATOR_PASSPORT')||JSON.stringify(p).includes('ANK_OPERATOR_SCHOOL'))fail('duplicate school/passport architecture leaked in');
+const rev=p.profiles.find(x=>x.profile_id==='revenue');
+if(!rev||!rev.agent_refs.includes('ank-growth'))fail('Revenue Operator must reuse ank-growth');
+const track=p.training_tracks?.revenue_v1;
+for(const c of track.capability_curriculum)if(!g.agent.capabilities.includes(c))fail('growth missing trained capability '+c);
+for(const gate of ['external_message','public_publication'])if(!g.agent.human_gates.includes(gate))fail('growth missing human gate '+gate);
+for(const f of ['cold_email','cold_dm','unsolicited_bulk_message','scrape_personal_contact_data','impersonation'])if(!g.agent.forbidden_actions.includes(f))fail('growth missing forbidden action '+f);
+if(!track.human_gates.includes('pricing_change')||!track.human_gates.includes('contract_execution'))fail('revenue commercial gates missing');
+console.log('ANK Operator Profiles QA passed');
