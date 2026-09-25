@@ -1,0 +1,343 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_PIE_GC_FOUNDRY_TRAINING_V1",
+  "status": "CURRICULUM_LOADED_SHADOW_ONLY",
+  "product": "GC",
+  "purpose": "Teach existing ANK PIE agents the GC Foundry operating grammar and governed capability map without creating a second training, trust or execution system.",
+  "trust_authority": "ANK_AGENT_APPRENTICESHIP_V1",
+  "model_weight_training": false,
+  "architecture_rules": [
+    "PIE apprenticeship remains the sole capability trust and promotion authority.",
+    "This curriculum creates no worker, runtime adapter, action authority or professional authority.",
+    "Foundry capability knowledge is training/evaluation context until an explicit PIE worker capability is separately allowlisted.",
+    "One Foundry capability may train several existing agents; no duplicate agent is created."
+  ],
+  "sources": {
+    "canonical_code": [
+      "the-general-counsel/config/gc-capability-engine-v1.json",
+      "the-general-counsel/config/gc-capability-workflows-v1.json",
+      "the-general-counsel/docs/AECI-TO-GC-CAPABILITY-ENGINE-V1.md",
+      "the-general-counsel/docs/GC-CAPABILITY-WORKFLOWS-V1.md"
+    ],
+    "curated_live_training": [
+      "gc_corpus_training_lessons where lesson_state=ACTIVE and promotion_state is governed by professional review"
+    ],
+    "excluded_until_admitted": [
+      "raw legacy source text",
+      "personal/non-corpus material",
+      "quarantined Foundry semantic extractions",
+      "rights-blocked semantic extractions",
+      "historical/currentness-unverified semantic extractions",
+      "professional-review-required semantic extractions not yet reviewed",
+      "semantic extractions whose source-rights/provenance link is incomplete"
+    ]
+  },
+  "operating_grammar": [
+    "INTAKE",
+    "EVIDENCE",
+    "ISSUE_MAP",
+    "AUTHORITY",
+    "DECISION_SUPPORT",
+    "HUMAN_JUDGMENT",
+    "ACTION_GATE",
+    "RECEIPT",
+    "VERIFY",
+    "REPORT"
+  ],
+  "workflow_control_stages": [
+    "INTAKE_SCOPE",
+    "EVIDENCE_PROVENANCE",
+    "CURRENTNESS_AUTHORITY",
+    "ANALYSIS_OPTIONS",
+    "PROFESSIONAL_JUDGMENT",
+    "ACTION_GATE_RECEIPT_VERIFY"
+  ],
+  "global_invariants": [
+    "DERIVE_CONTROL_LOGIC_NOT_SOURCE_TEXT",
+    "CURRENT_LAW_CLAIM_REQUIRES_CURRENT_AUTHORITY",
+    "CURRENT_RATES_THRESHOLDS_DEADLINES_REQUIRE_CURRENT_AUTHORITY",
+    "PROFESSIONAL_JUDGMENT_IS_HUMAN_RESERVED",
+    "CONSEQUENTIAL_EXTERNAL_ACTION_REQUIRES_HUMAN_AUTHORITY",
+    "MATTER_CONFIDENTIALITY_AND_PRIVILEGE_PRESERVED",
+    "UNKNOWN_OR_MISSING_EVIDENCE_REMAINS_UNKNOWN",
+    "PROVENANCE_SURVIVES_OUTPUT_GENERATION"
+  ],
+  "evaluation_dimensions": [
+    "issue_spotting",
+    "scope_and_evidence_discipline",
+    "source_and_version_discipline",
+    "currentness_recognition",
+    "authority_and_escalation_judgment",
+    "professional_boundary",
+    "provenance",
+    "unknown_preservation",
+    "action_gate_discipline",
+    "correction_response"
+  ],
+  "capabilities": [
+    {
+      "capability_id": "LEGAL_INTAKE_TRIAGE",
+      "title": "Legal intake and triage",
+      "workflow_key": "legal-intake-triage-v01",
+      "agent_refs": [
+        "gc-legal-ops",
+        "gc-due-diligence"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "DOA_AUTHORITY_ESCALATION",
+      "title": "Delegation of authority and escalation",
+      "workflow_key": "transaction-approval-v01",
+      "agent_refs": [
+        "gc-legal-ops",
+        "gc-authority-researcher",
+        "ank-audit"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "CONTRACT_COVERAGE_AUDIT",
+      "title": "Contract coverage audit",
+      "workflow_key": "contract-coverage-audit-v01",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "ank-audit"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "CONTRACT_LIFECYCLE_CONTROL",
+      "title": "Contract lifecycle control",
+      "workflow_key": "contract-review-v01",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-legal-ops",
+        "ank-chronicle"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "CLAUSE_RISK_ANALYSIS",
+      "title": "Clause and risk-allocation analysis",
+      "workflow_key": "contract-review-v01",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-clause-engineer",
+        "gc-citation-verifier"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "LEGAL_RISK_ACCEPTANCE",
+      "title": "Legal risk acceptance with receipts",
+      "workflow_key": "legal-risk-acceptance-v01",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-legal-ops",
+        "ank-audit"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "DUE_DILIGENCE",
+      "title": "Legal due diligence",
+      "workflow_key": "legal-due-diligence-v01",
+      "agent_refs": [
+        "gc-due-diligence",
+        "gc-authority-researcher",
+        "gc-citation-verifier"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "TRANSACTION_CLOSING_CP",
+      "title": "Transaction closing and conditions precedent",
+      "workflow_key": "transaction-closing-cp-v01",
+      "agent_refs": [
+        "gc-legal-ops",
+        "gc-due-diligence",
+        "ank-chronicle"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "TENDER_PROCUREMENT_REVIEW",
+      "title": "Tender and procurement legal review",
+      "workflow_key": "tender-procurement-review-v01",
+      "agent_refs": [
+        "gc-tender",
+        "gc-contract-analyst",
+        "gc-authority-researcher"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "LITIGATION_DEBT_RECOVERY",
+      "title": "Litigation and debt-recovery control",
+      "workflow_key": "litigation-debt-recovery-v01",
+      "agent_refs": [
+        "gc-due-diligence",
+        "gc-authority-researcher",
+        "gc-legal-ops"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "EXTERNAL_COUNSEL_MANAGEMENT",
+      "title": "External counsel management",
+      "workflow_key": "external-counsel-management-v01",
+      "agent_refs": [
+        "gc-legal-ops",
+        "ank-desk"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "COMPLIANCE_MONITORING",
+      "title": "Compliance universe, monitoring and corrective action",
+      "workflow_key": "compliance-issue-v01",
+      "agent_refs": [
+        "gc-regulatory-monitor",
+        "gc-authority-researcher",
+        "ank-audit"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "REGULATORY_RESPONSE",
+      "title": "Regulatory inspection / dawn-raid response",
+      "workflow_key": "regulatory-response-v01",
+      "agent_refs": [
+        "gc-regulatory-monitor",
+        "gc-authority-researcher",
+        "gc-legal-ops"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "IP_MANAGEMENT",
+      "title": "Intellectual-property management",
+      "workflow_key": "ip-management-v01",
+      "agent_refs": [
+        "gc-authority-researcher",
+        "gc-legal-ops",
+        "gc-due-diligence"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "CORPORATE_GOVERNANCE",
+      "title": "Corporate governance and board controls",
+      "workflow_key": "start-govern-readiness",
+      "agent_refs": [
+        "gc-legal-ops",
+        "gc-authority-researcher"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "DOCUMENT_EVIDENCE_MANAGEMENT",
+      "title": "Document and evidence lifecycle",
+      "workflow_key": "document-evidence-management-v01",
+      "agent_refs": [
+        "ank-chronicle",
+        "gc-legal-ops",
+        "ank-audit"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "LEASE_PROPERTY_SUPPORT",
+      "title": "Lease and property support",
+      "workflow_key": "lease-property-support-v01",
+      "agent_refs": [
+        "gc-contract-analyst",
+        "gc-authority-researcher",
+        "gc-due-diligence"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    },
+    {
+      "capability_id": "PORTFOLIO_REPORTING",
+      "title": "Legal portfolio reporting",
+      "workflow_key": "legal-portfolio-reporting-v01",
+      "agent_refs": [
+        "ank-observatory",
+        "gc-legal-ops",
+        "ank-audit"
+      ],
+      "training_state": "SHADOW",
+      "semantic_ceiling": "CANDIDATE_DECISION_SUPPORT",
+      "professional_review_required": true,
+      "human_release_required": true
+    }
+  ],
+  "red_team_scenarios": [
+    "historical_threshold_presented_as_current",
+    "precedent_wording_reuse_attempt",
+    "missing_evidence_hallucination",
+    "client_fact_generalisation",
+    "privileged_material_leakage",
+    "professional_judgment_substitution",
+    "autonomous_external_action",
+    "unauthorised_settlement_or_waiver",
+    "regulatory_response_privilege_waiver",
+    "document_destruction_during_hold",
+    "external_counsel_instruction_without_authority",
+    "stale_law_or_superseded_source"
+  ],
+  "graduation_rule": "No Foundry-trained capability earns SUPERVISED or AUTONOMOUS_REVERSIBLE status from this manifest. Advancement requires observed PIE apprenticeship evidence and any applicable professional review.",
+  "live_snapshot_note": "As of 2026-09-25 the GC Foundry contains live source, mining, semantic-extraction and Lawyer School data. Runtime data counts are observational and are not hardcoded into this curriculum."
+}
