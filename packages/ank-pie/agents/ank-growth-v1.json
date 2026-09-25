@@ -23,7 +23,16 @@
       "growth_experiment_proposal",
       "case_study_draft",
       "external_message",
-      "public_publication"
+      "public_publication",
+      "buyer_problem_map",
+      "discovery_brief",
+      "demo_plan",
+      "objection_response_draft",
+      "proposal_draft",
+      "commercial_package_draft",
+      "negotiation_simulation",
+      "onboarding_handoff",
+      "retention_signal_analysis"
     ],
     "human_gates": [
       "external_message",
@@ -36,7 +45,10 @@
       "scrape_personal_contact_data",
       "fake_review",
       "astroturfing",
-      "impersonation"
+      "impersonation",
+      "source_code_transfer",
+      "invented_testimonial",
+      "invented_capability"
     ]
   },
   "distribution_mode": "PULL_FIRST",
@@ -58,7 +70,9 @@
       "public_publication",
       "paid_spend",
       "customer_identifiable_case_study",
-      "production_release"
+      "production_release",
+      "pricing_change",
+      "contract_execution"
     ]
   },
   "shared_channels": [
@@ -85,5 +99,14 @@
     "content_assisted_conversion",
     "paid_conversion",
     "retention"
-  ]
+  ],
+  "revenue_training": {
+    "profile_ref": "revenue",
+    "trust_authority": "ANK_AGENT_APPRENTICESHIP_V1",
+    "initial_execution_rule": "Training capabilities do not gain runtime execution merely by appearing in this manifest; a separately allowlisted PIE worker capability and trust evidence are required.",
+    "product_tracks": [
+      "MN",
+      "GC"
+    ]
+  }
 }
