@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "ANK_FEDERATION_V1",
+  "contract_version": "2026-09-25.1",
+  "purpose": "Sovereign, fail-closed interoperability between Anunnaki.Live, The General Counsel and Michael Noah.",
+  "principles": [
+    "Each product remains independently operable and owns its own data, authority, audit and execution decisions.",
+    "External responses are untrusted until locally validated and admitted.",
+    "Authentication never implies authority.",
+    "A Professional Twin represents one identifiable human professional; products, learners and generic agents are never Professional Twins.",
+    "Network learning is opt-in, scoped, provenance-preserving and never silently mutates another product's policy.",
+    "A product may become more capable when federated but never less functional when disconnected."
+  ],
+  "message_types": {
+    "AI_AUDIT_REQUEST": {
+      "required_payload": [
+        "audit_type",
+        "scope",
+        "question",
+        "corpus_refs",
+        "materiality",
+        "output_requirements"
+      ],
+      "rule": "Request is bounded; requesting product retains final authority over admission and downstream action."
+    },
+    "AI_AUDIT_RESULT": {
+      "required_payload": [
+        "audit_id",
+        "status",
+        "findings",
+        "provenance",
+        "limitations"
+      ],
+      "rule": "Findings are evidence-bearing candidates, not automatic legal, assessment, wellbeing, safety or professional conclusions."
+    },
+    "TWIN_REQUEST": {
+      "required_payload": [
+        "human_professional_ref",
+        "profession",
+        "jurisdictions",
+        "requested_capabilities",
+        "requested_authority"
+      ],
+      "rule": "human_professional_ref is mandatory. A learner, product, organisation or generic agent cannot be the Twin subject."
+    },
+    "TWIN_RESULT": {
+      "required_payload": [
+        "twin_ref",
+        "human_professional_ref",
+        "profession",
+        "capabilities",
+        "authority_ceiling",
+        "mastery_claims",
+        "provenance"
+      ],
+      "rule": "Authority claims are ceilings/capabilities only; local product/organisation authority remains separately granted."
+    },
+    "TEACHING_OFFER": {
+      "required_payload": [
+        "direction",
+        "scope",
+        "consent",
+        "data_handling",
+        "lesson",
+        "provenance"
+      ],
+      "rule": "Teaching is a candidate packet. It never directly updates production policy, corpus, authority or model behaviour."
+    },
+    "TEACHING_DECISION": {
+      "required_payload": [
+        "teaching_ref",
+        "decision",
+        "reason",
+        "admitted_scope",
+        "provenance"
+      ],
+      "rule": "Allowed decisions: REJECT, QUARANTINE, VERIFY, ADMIT."
+    },
+    "ERROR": {
+      "required_payload": [
+        "code",
+        "message"
+      ]
+    }
+  },
+  "envelope_required": [
+    "schema_version",
+    "message_id",
+    "correlation_id",
+    "issued_at",
+    "issuer",
+    "audience",
+    "message_type",
+    "authority",
+    "data_classification",
+    "payload"
+  ],
+  "envelope_rules": {
+    "schema_version": "1.0",
+    "product_ids": [
+      "ANUNNAKI",
+      "GC",
+      "MN"
+    ],
+    "data_classifications": [
+      "PUBLIC",
+      "INTERNAL",
+      "CONFIDENTIAL",
+      "PROFESSIONAL_CONFIDENTIAL",
+      "CHILD_PROTECTED"
+    ],
+    "authority_required": [
+      "requested_scope",
+      "human_approval_required",
+      "export_permission"
+    ],
+    "provenance_on_results": true
+  },
+  "teaching_rules": {
+    "defaults": {
+      "enabled": false,
+      "inbound_mode": "CANDIDATE_ONLY",
+      "outbound_mode": "EXPLICIT_OPT_IN",
+      "automatic_policy_mutation": false,
+      "automatic_authority_expansion": false
+    },
+    "prohibited_global_export": [
+      "raw child data",
+      "child identity",
+      "family private diary or wellbeing content",
+      "confidential client source material",
+      "privileged material",
+      "credentials, secrets or authentication tokens"
+    ],
+    "allowed_learning_shapes": [
+      "de-identified correction pattern",
+      "rubric delta",
+      "workflow improvement",
+      "failure mode",
+      "capability calibration evidence",
+      "source/version correction",
+      "synthetic simulation result"
+    ],
+    "scopes": [
+      "THIS_TWIN",
+      "THIS_ORGANISATION",
+      "THIS_PRODUCT",
+      "NETWORK_CANDIDATE"
+    ]
+  },
+  "mastery_passport": {
+    "issuer_example": "MN",
+    "required": [
+      "passport_ref",
+      "twin_ref",
+      "human_professional_ref",
+      "profession",
+      "capability",
+      "jurisdictions",
+      "mastery_state",
+      "evidence_summary",
+      "corpus_version",
+      "issued_at",
+      "expires_at",
+      "receipt_ref"
+    ],
+    "mastery_states": [
+      "DIAGNOSTIC",
+      "LEARNING",
+      "SUPERVISED_READY",
+      "CALIBRATED",
+      "RECALIBRATION_REQUIRED"
+    ],
+    "rule": "Mastery evidence never grants a licence, reserved professional status, statutory appointment or product/organisation execution authority."
+  },
+  "local_admission_decisions": [
+    "REJECT",
+    "QUARANTINE",
+    "VERIFY",
+    "ADMIT"
+  ],
+  "disconnect_behavior": {
+    "GC": "Continue local matters, determinations, audits, authority gates, receipts and local specialist workflows. Queue federation requests.",
+    "MN": "Continue learning, assessment, evidence, moderation and local reviewer workflows. Queue federation requests.",
+    "ANUNNAKI": "Continue Professional Twin, professional-network and federation services independently of GC/MN."
+  }
+}
