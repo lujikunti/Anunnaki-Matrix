@@ -1,0 +1,22 @@
+name: ANK federation contract
+on:
+  pull_request:
+    paths:
+      - "packages/ank-federation/**"
+      - "api/federation/**"
+      - ".github/workflows/ank-federation-contract.yml"
+  push:
+    branches: [main]
+    paths:
+      - "packages/ank-federation/**"
+      - "api/federation/**"
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: node packages/ank-federation/tests/contract.test.mjs
