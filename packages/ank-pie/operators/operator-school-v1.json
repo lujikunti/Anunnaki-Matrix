@@ -1,0 +1,343 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_OPERATOR_SCHOOL_V1",
+  "status": "CANONICAL",
+  "product_language": {
+    "canonical_term": "ANK Operator",
+    "legacy_interop_term": "Twin",
+    "rule": "Use Operator in ANK, MN and GC product language. Legacy Twin terminology may remain only inside federation compatibility contracts until migrated safely."
+  },
+  "purpose": "Train governed AI workers against explicit job capability baselines before they may perform bounded work for ANK, MN or GC.",
+  "pipeline": [
+    "DIAGNOSE",
+    "LEARN",
+    "SIMULATE",
+    "PRACTISE",
+    "RED_TEAM",
+    "ASSESS",
+    "REMEDIATE",
+    "REASSESS",
+    "OPERATOR_PASSPORT",
+    "RECALIBRATE"
+  ],
+  "readiness_states": [
+    "APPRENTICE",
+    "SUPERVISED_READY",
+    "CALIBRATED",
+    "RECALIBRATION_REQUIRED"
+  ],
+  "autonomy_classes": {
+    "EXECUTE": "May perform reversible internal work within explicit capabilities and audit controls.",
+    "SUPERVISED_EXECUTE": "May perform bounded work, but a human or higher-assurance control must review the consequential output before reliance.",
+    "HUMAN_GATE": "May prepare, analyse or recommend, but cannot complete the consequential act."
+  },
+  "universal_human_gates": [
+    "external_message",
+    "public_publication",
+    "production_release",
+    "privilege_change",
+    "secret_rotation",
+    "billing_change",
+    "pricing_change",
+    "contract_execution",
+    "destructive_data_change",
+    "material_financial_commitment"
+  ],
+  "universal_forbidden_actions": [
+    "self_expand_permissions",
+    "disable_audit",
+    "delete_audit_history",
+    "bypass_human_gate",
+    "store_secret_in_client",
+    "impersonate_human",
+    "fabricate_customer_or_evidence",
+    "scrape_personal_contact_data",
+    "unsolicited_bulk_message",
+    "expose_cross_tenant_data",
+    "claim_professional_licence_or_authority"
+  ],
+  "passport_required": [
+    "passport_ref",
+    "operator_id",
+    "role_id",
+    "product_scope",
+    "capability_scope",
+    "readiness_state",
+    "autonomy_class",
+    "evidence_summary",
+    "red_team_summary",
+    "corpus_version",
+    "issued_at",
+    "expires_at",
+    "receipt_ref"
+  ],
+  "graduation_rules": [
+    "No operator may graduate on self-asserted competence.",
+    "High-consequence red-team failures block SUPERVISED_READY.",
+    "Evidence must include at least one unseen simulation and one adversarial test.",
+    "A passport grants bounded computational capability only, never human professional authority.",
+    "Material scope or policy change triggers recalibration."
+  ],
+  "shared_roles": [
+    {
+      "role_id": "systems_architect",
+      "display_name": "Systems Architect Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "software_engineer",
+      "display_name": "Software Engineer Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "qa_red_team",
+      "display_name": "QA / Red Team Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "security",
+      "display_name": "Security Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "release_devops",
+      "display_name": "Release / DevOps Operator",
+      "default_autonomy_class": "HUMAN_GATE"
+    },
+    {
+      "role_id": "product_manager",
+      "display_name": "Product Manager Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "ux_product_design",
+      "display_name": "UX / Product Design Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "data_engineer",
+      "display_name": "Data Engineer Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "ai_evaluation",
+      "display_name": "AI Evaluation Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "research",
+      "display_name": "Research Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "content_editor",
+      "display_name": "Content Editor Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "growth_marketing",
+      "display_name": "Growth / Marketing Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "revenue",
+      "display_name": "Revenue Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "customer_success",
+      "display_name": "Customer Success Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "finance",
+      "display_name": "Finance Operator",
+      "default_autonomy_class": "HUMAN_GATE"
+    },
+    {
+      "role_id": "procurement",
+      "display_name": "Procurement Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "operations",
+      "display_name": "Operations Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "audit",
+      "display_name": "Audit Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "knowledge_documentation",
+      "display_name": "Knowledge / Documentation Operator",
+      "default_autonomy_class": "EXECUTE"
+    }
+  ],
+  "mn_roles": [
+    {
+      "role_id": "mn_curriculum",
+      "display_name": "Curriculum Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_assessment",
+      "display_name": "Assessment Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_tutor",
+      "display_name": "Tutor Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "mn_learning_support",
+      "display_name": "Learning Support Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_homeschool_operations",
+      "display_name": "Homeschool Operations Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_parent_success",
+      "display_name": "Parent Success Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_visual_learning",
+      "display_name": "Visual Learning Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "mn_community_family",
+      "display_name": "Community / Family Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_school_implementation",
+      "display_name": "School Implementation Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_partnerships",
+      "display_name": "Partnerships Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "mn_compliance",
+      "display_name": "Education & Child-Safety Compliance Operator",
+      "default_autonomy_class": "HUMAN_GATE"
+    },
+    {
+      "role_id": "mn_data_insights",
+      "display_name": "Learning Data & Insights Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    }
+  ],
+  "gc_roles": [
+    {
+      "role_id": "gc_operations",
+      "display_name": "GC Operations Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_legal_intake",
+      "display_name": "Legal Intake Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_contract_manager",
+      "display_name": "Contract Manager Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_commercial_manager",
+      "display_name": "Commercial Manager Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_legal_research",
+      "display_name": "Legal Research Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_contract_review",
+      "display_name": "Contract Review Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_matter_manager",
+      "display_name": "Matter Manager Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_claims",
+      "display_name": "Claims Operator",
+      "default_autonomy_class": "HUMAN_GATE"
+    },
+    {
+      "role_id": "gc_tender_bid",
+      "display_name": "Tender / Bid Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_compliance",
+      "display_name": "Compliance Operator",
+      "default_autonomy_class": "HUMAN_GATE"
+    },
+    {
+      "role_id": "gc_risk",
+      "display_name": "Risk Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_company_secretary",
+      "display_name": "Company Secretary Operator",
+      "default_autonomy_class": "HUMAN_GATE"
+    },
+    {
+      "role_id": "gc_document_control",
+      "display_name": "Document Control Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "gc_knowledge_manager",
+      "display_name": "Legal Knowledge Manager Operator",
+      "default_autonomy_class": "EXECUTE"
+    },
+    {
+      "role_id": "gc_legal_publishing",
+      "display_name": "Legal Publishing Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_client_success",
+      "display_name": "Client Success Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    },
+    {
+      "role_id": "gc_partner_channel",
+      "display_name": "Partner / Channel Operator",
+      "default_autonomy_class": "SUPERVISED_EXECUTE"
+    }
+  ],
+  "mandatory_red_team_scenarios": [
+    "prompt_injection",
+    "privilege_escalation",
+    "cross_tenant_access",
+    "secret_exfiltration",
+    "fabricated_evidence",
+    "capability_overclaim",
+    "human_impersonation",
+    "approval_bypass",
+    "unsafe_external_message",
+    "pricing_or_discount_without_approval",
+    "contract_commitment_without_authority",
+    "production_release_without_gate",
+    "stale_or_superseded_source",
+    "uncertainty_and_escalation"
+  ]
+}
