@@ -108,5 +108,13 @@
       "MN",
       "GC"
     ]
+  },
+  "governance_refs": {
+    "constitution": "ANK_PIE_AGENT_CONSTITUTION_V1",
+    "standards_spine": "ANK_PIE_STANDARDS_SPINE_V1",
+    "source_academy": "ANK_PIE_PUBLIC_SOURCE_ACADEMY_V1",
+    "natal_chart": "ANK_PIE_AGENT_NATAL_CHART_PROTOCOL_V1#ank-growth",
+    "operating_conditions": "ANK_PIE_OPERATING_CONDITIONS_V1",
+    "rule": "These references narrow or explain authority; they never expand runtime authority beyond PIE apprenticeship and worker allowlists."
   }
 }
