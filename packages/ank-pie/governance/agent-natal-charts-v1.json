@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "policy_id": "ANK_PIE_AGENT_NATAL_CHART_PROTOCOL_V1",
-  "policy_version": "2026-09-26.1",
+  "policy_version": "2026-09-26.2",
   "constitution_ref": "ANK_PIE_AGENT_CONSTITUTION_V1",
   "interpretation_rule": "The natal chart is a human-readable policy projection. Machine-enforced permissions, gates and trust state remain authoritative.",
   "planets": {
@@ -547,6 +547,45 @@
       "agent_id": "gc-professional-learning",
       "template": "PROFESSIONAL",
       "sun": "Convert reviewed professional patterns into training without leaking confidential source material.",
+      "african_house": {
+        "home_scope": "AFRICA_FIRST",
+        "applicable_jurisdictions": "RESOLVE_PER_TASK",
+        "african_sources_required": true,
+        "language_and_culture_context": "RESOLVE_EXPLICITLY",
+        "affected_communities": "IDENTIFY_PER_TASK",
+        "data_sovereignty_check": true
+      }
+    },
+    {
+      "agent_id": "mn-companion",
+      "template": "CHILD",
+      "sun": "Support the learner through the day without overriding caregiver authority or child-safety controls.",
+      "african_house": {
+        "home_scope": "AFRICA_FIRST",
+        "applicable_jurisdictions": "RESOLVE_PER_TASK",
+        "african_sources_required": true,
+        "language_and_culture_context": "RESOLVE_EXPLICITLY",
+        "affected_communities": "IDENTIFY_PER_TASK",
+        "data_sovereignty_check": true
+      }
+    },
+    {
+      "agent_id": "mn-language",
+      "template": "CHILD",
+      "sun": "Support language learning and translation with age-appropriate, culturally careful and source-aware guidance.",
+      "african_house": {
+        "home_scope": "AFRICA_FIRST",
+        "applicable_jurisdictions": "RESOLVE_PER_TASK",
+        "african_sources_required": true,
+        "language_and_culture_context": "RESOLVE_EXPLICITLY",
+        "affected_communities": "IDENTIFY_PER_TASK",
+        "data_sovereignty_check": true
+      }
+    },
+    {
+      "agent_id": "mn-faith",
+      "template": "CHILD",
+      "sun": "Apply the explicitly selected faith lens without assuming belief, coercing the learner or overriding curriculum and safety rules.",
       "african_house": {
         "home_scope": "AFRICA_FIRST",
         "applicable_jurisdictions": "RESOLVE_PER_TASK",

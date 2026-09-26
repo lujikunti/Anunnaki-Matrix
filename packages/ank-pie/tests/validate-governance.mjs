@@ -18,6 +18,7 @@ if(!natal.african_house?.required_fields?.includes('data_sovereignty_check'))fai
 if((natal.houses||[]).length!==12)fail('natal chart must preserve 12 operational houses');
 
 const referenced=new Set((operators.profiles||[]).flatMap(p=>p.agent_refs||[]));
+for(const id of ['mn-companion','mn-language','mn-faith']) referenced.add(id);
 for(const agentId of referenced){
   const c=resolveAgentChart(natal,agentId);
   if(!c)fail('operator agent has no natal chart: '+agentId);
@@ -36,4 +37,4 @@ if(evaluateAction({chart:growth,constitution,conditions,requested_level:'EXECUTE
 const builder=resolveAgentChart(natal,'ank-build');
 if(effectiveCeiling(builder,conditions,['SECURITY_INCIDENT'])!=='RECOMMEND')fail('security incident did not downgrade builder');
 
-console.log(JSON.stringify({gate:'ank-pie-governance',status:'PASS',charts:natal.agent_assignments.length,sources:spine.sources.length},null,2));
+console.log(JSON.stringify({gate:'ank-pie-governance',status:'PASS',charts:natal.agent_assignments.length,sources:spine.sources.length,runtime_coverage:['mn-companion','mn-language','mn-faith']},null,2));
