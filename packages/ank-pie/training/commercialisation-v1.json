@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_COMMERCIALISATION_V1",
+  "as_of": "2026-09-26",
+  "owner_profile": "revenue",
+  "primary_agent_ref": "ank-growth",
+  "principle": "PIE does not create products because they sound useful. It proves demand before productisation, keeps the catalogue small, and treats paid behaviour as the strongest validation signal.",
+  "product_truth_rule": "No brochure, demo, website claim or price may state a capability that is not already implemented and verified in the relevant product repository.",
+  "new_product_rule": "A new SKU may not enter engineering build from an idea alone. It must pass SWOT and demand evidence, then obtain paid-market evidence through a transparent scoped pilot, preorder or paid commitment using existing capabilities or a clearly disclosed concierge/manual delivery path.",
+  "swot_rule": "SWOT is mandatory but never sufficient evidence that a product will sell.",
+  "statuses": [
+    "PARK",
+    "KILL",
+    "TEST_NOW",
+    "TEST_NOW_BLOCKED",
+    "SELL_NOW"
+  ],
+  "decision_gates": [
+    {
+      "gate": "G0_PRODUCT_TRUTH",
+      "pass_when": [
+        "buyer can be named",
+        "problem is specific",
+        "delivery capability already exists or test is explicitly concierge/manual",
+        "claims are repository-verifiable"
+      ],
+      "fail_action": "PARK"
+    },
+    {
+      "gate": "G1_DEMAND_EVIDENCE",
+      "pass_when": [
+        "at least two independent demand signals",
+        "at least one signal is current or first-party",
+        "willingness-to-pay proxy or paid alternative exists"
+      ],
+      "fail_action": "PARK"
+    },
+    {
+      "gate": "G2_SWOT",
+      "required": [
+        "strengths",
+        "weaknesses",
+        "opportunities",
+        "threats"
+      ],
+      "pass_when": [
+        "weaknesses and threats do not create an unmitigated blocker",
+        "differentiation is concrete rather than branding-only"
+      ],
+      "fail_action": "PARK_OR_KILL"
+    },
+    {
+      "gate": "G3_COSTING",
+      "required_cost_lines": [
+        "ai_model_and_api",
+        "compute_storage_bandwidth",
+        "payment_processing",
+        "human_professional_review",
+        "support_and_success",
+        "content_or_design_delivery",
+        "tax_or_statutory_cost_if_applicable",
+        "failure_refund_contingency"
+      ],
+      "pass_when": [
+        "actual or evidenced estimates exist for every material cost line",
+        "contribution margin is positive at tested price",
+        "digital-only target margin is at least 60 percent unless founder approves otherwise",
+        "review-heavy service target margin is at least 40 percent unless founder approves otherwise"
+      ],
+      "fail_action": "REPRICE_OR_PARK"
+    },
+    {
+      "gate": "G4_FAST_SELL_TEST",
+      "rules": {
+        "b2b": "SELL_NOW requires at least two unrelated paying customers within 30 days of first qualified offer exposure, at no more than 20 percent discount from tested price, unless the founder approves a documented exception.",
+        "b2c": "SELL_NOW requires at least ten paid customers within 30 days of live checkout plus recorded qualified traffic, at no more than 20 percent discount from tested price, unless the founder approves a documented exception.",
+        "minimum_metrics": [
+          "qualified_offer_exposures",
+          "demo_or_checkout_starts",
+          "paid_conversions",
+          "days_to_first_sale",
+          "tested_price",
+          "discount_pct",
+          "refund_or_cancellation_signal"
+        ]
+      },
+      "fail_action": "PARK_OR_REWORK"
+    },
+    {
+      "gate": "G5_COMMERCIAL_ASSETS",
+      "allowed_for": [
+        "TEST_NOW",
+        "TEST_NOW_BLOCKED",
+        "SELL_NOW"
+      ],
+      "outputs": [
+        "commercial_product_passport",
+        "one_page_brochure",
+        "deep_capability_brochure",
+        "demo_plan",
+        "demo_assets",
+        "website_product_page",
+        "faq_and_objections",
+        "proposal_or_checkout_copy"
+      ],
+      "rule": "TEST assets must be lean. Do not spend engineering or design effort polishing an unvalidated offer beyond what is needed to test willingness to pay."
+    },
+    {
+      "gate": "G6_PUBLIC_RELEASE",
+      "human_gates": [
+        "public_publication",
+        "external_message",
+        "pricing_change",
+        "paid_spend",
+        "production_release",
+        "contract_execution"
+      ],
+      "rule": "PIE may prepare everything internally; a human gate remains required for public publication, direct external messaging, price changes, spend, production release and contracts."
+    }
+  ],
+  "evidence_hierarchy": [
+    "paid_purchase_or_signed_paid_commitment",
+    "first_party_inbound_request_or_demo_request",
+    "repeat_usage_or_retention",
+    "public_market_and_competitor_price_evidence",
+    "search_or_content_demand_signal",
+    "founder_intuition"
+  ],
+  "commercial_product_passport_required_fields": [
+    "product_truth",
+    "buyer",
+    "urgent_problem",
+    "job_to_be_done",
+    "swot",
+    "demand_evidence",
+    "capabilities",
+    "limitations",
+    "delivery_inputs",
+    "delivery_outputs",
+    "turnaround",
+    "cost_model",
+    "tested_price",
+    "margin",
+    "demo",
+    "brochure",
+    "website_page",
+    "objections",
+    "validation_metrics",
+    "decision_status"
+  ],
+  "hard_prohibitions": [
+    "invent_market_demand",
+    "invent_costs",
+    "invent_testimonials",
+    "invent_capabilities",
+    "build_new_sku_before_market_gate",
+    "publish_unvalidated_price_change",
+    "hide_manual_or_concierge_delivery",
+    "count_free_interest_as_paid_validation",
+    "use_vanity_impressions_as_sellability_proof"
+  ]
+}
