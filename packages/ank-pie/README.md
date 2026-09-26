@@ -25,3 +25,7 @@ The Revenue Operator reuses `ank-growth`. Its additional commercial capabilities
 `training/gc-foundry-v1.json` teaches existing PIE agents the GC Foundry's 18 governed capability families and six-stage workflow grammar. It is curriculum/evaluation context only: all capabilities begin SHADOW, PIE apprenticeship remains the sole trust authority, and no worker allowlist or professional/action authority is created.
 
 Raw Foundry source text and non-admitted semantic extractions are not copied into PIE. Curated capability/workflow registries and professionally governed Lawyer School patterns are the training sources; quarantined, rights-blocked, stale/currentness-unverified and provenance-incomplete extractions stay excluded.
+
+## Commercial kill gate
+
+`training/commercialisation-v1.json` makes SWOT, demand evidence, product truth, costing and a lean paid-market test mandatory before PIE treats an offer as sellable. Unproven products default to PARK; SWOT alone never validates demand. `training/fast-sell-portfolio-v1.json` contains the current evidence-backed MN/GC test shortlist. Product brochures, demos and website pages are generated only for TEST_NOW, TEST_NOW_BLOCKED or SELL_NOW offers, and public publication/pricing remain human gates.
