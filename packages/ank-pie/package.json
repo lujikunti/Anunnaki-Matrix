@@ -1,9 +1,9 @@
 {
   "name": "@ank/pie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
-    "test": "node tests/validate-growth.mjs && node tests/validate-operator-profiles.mjs && node tests/validate-gc-foundry-training.mjs"
+    "test": "node tests/validate-growth.mjs && node tests/validate-operator-profiles.mjs && node tests/validate-gc-foundry-training.mjs && node tests/validate-governance.mjs && node tests/red-team-governance.mjs"
   },
   "engines": {
     "node": ">=22"
