@@ -154,12 +154,14 @@
         },
         "brochure_allowed": true,
         "engineering_expansion_allowed": false
-      },
+      }
+    ],
+    "parked": [
       {
         "product_key": "deal_control_pack",
         "product_name": "Deal Control Pack",
         "existing_price_zar": 4500,
-        "status": "TEST_NOW",
+        "status": "PARK",
         "internal_fast_sell_score": 76,
         "buyer": "Founder-led SME or commercial team about to sign a material customer, supplier or project deal",
         "urgent_problem": "The business needs a fast view of money, authority, dates, notices and proof before signature.",
@@ -200,8 +202,9 @@
           "status": "EXISTING_PRICE_REQUIRES_COST_REVALIDATION",
           "tested_price_zar": 4500
         },
-        "brochure_allowed": true,
-        "engineering_expansion_allowed": false
+        "brochure_allowed": false,
+        "engineering_expansion_allowed": false,
+        "park_reason": "Broad pre-signing need is less urgent than cash/payment/claims and current independent demand evidence is not strong enough for a fast-sell test."
       }
     ]
   },
