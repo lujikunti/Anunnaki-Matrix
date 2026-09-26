@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_PIE_OPERATING_CONDITIONS_V1",
+  "policy_version": "2026-09-26.1",
+  "metaphors": {
+    "transit": "Temporary operating condition that may narrow but never silently expand authority.",
+    "retrograde": "Degraded dependency/source/provider state that reduces capabilities or forces manual review.",
+    "synastry": "Agent-to-agent authority and separation-of-duties relationship.",
+    "saturn_return": "Periodic recertification of competence, permissions, sources, safety controls and trust evidence."
+  },
+  "transits": [
+    {
+      "id": "SECURITY_INCIDENT",
+      "max_action_level": "RECOMMEND",
+      "mandatory": [
+        "FREEZE_PRIVILEGE_EXPANSION",
+        "PRESERVE_LOGS",
+        "HUMAN_INCIDENT_COMMAND"
+      ]
+    },
+    {
+      "id": "RELEASE_WINDOW",
+      "max_action_level": "EXECUTE_REVERSIBLE",
+      "mandatory": [
+        "TESTS_PASS",
+        "ROLLBACK_READY",
+        "RELEASE_RECEIPT"
+      ]
+    },
+    {
+      "id": "BUDGET_FREEZE",
+      "max_action_level": "DRAFT",
+      "mandatory": [
+        "NO_NEW_SPEND_WITHOUT_HUMAN_OVERRIDE"
+      ]
+    },
+    {
+      "id": "REGULATORY_CHANGE",
+      "max_action_level": "DRAFT",
+      "mandatory": [
+        "CURRENTNESS_REVALIDATION",
+        "JURISDICTION_RECHECK"
+      ]
+    },
+    {
+      "id": "SOURCE_DEGRADED",
+      "max_action_level": "RECOMMEND",
+      "mandatory": [
+        "NO_CURRENTNESS_DEPENDENT_EXECUTION"
+      ]
+    },
+    {
+      "id": "PROVIDER_DEGRADED",
+      "max_action_level": "RECOMMEND",
+      "mandatory": [
+        "NO_SILENT_FALLBACK_TO_WEAKER_CONTROL"
+      ]
+    }
+  ],
+  "retrograde_rules": [
+    "A failed or stale authority source lowers confidence and may lower action authority; it never increases it.",
+    "A degraded identity, authorization, audit or kill-switch dependency blocks execution.",
+    "Fallback models/providers inherit the same or stricter policy; provider change never resets guardrails."
+  ],
+  "synastry_rules": [
+    "PROPOSER_AGENT_ID_MUST_DIFFER_FROM_APPROVER_AGENT_ID_FOR_MATERIAL_ACTIONS",
+    "RED_TEAM_MAY_CHALLENGE_BUILD_BUT_NOT_SELF_CERTIFY_BUILD",
+    "AUDIT_MAY_BLOCK_WHEN_EXPLICIT_POLICY_ALLOWS_BUT_MAY_NOT_GRANT_ITSELF_NEW_EXECUTION_POWER",
+    "PROFESSIONAL_REVIEWER_MUST_REMAIN_DISTINCT_WHERE_PROFESSIONAL_REVIEW_IS_REQUIRED"
+  ],
+  "saturn_return": {
+    "trigger_model": "RISK_BASED_AND_EVENT_BASED",
+    "mandatory_events": [
+      "MATERIAL_MODEL_CHANGE",
+      "MATERIAL_TOOL_OR_PERMISSION_CHANGE",
+      "NEW_JURISDICTION",
+      "MAJOR_INCIDENT",
+      "MAJOR_STANDARD_OR_LAW_CHANGE",
+      "PROMOTION_REQUEST"
+    ],
+    "review": [
+      "MISSION",
+      "CAPABILITIES",
+      "TOOL_PERMISSIONS",
+      "DATA_SCOPE",
+      "HUMAN_GATES",
+      "SOURCE_CURRENTNESS",
+      "RED_TEAM_RESULTS",
+      "ROLLBACK_AND_KILL_SWITCH",
+      "AUDIT_COMPLETENESS"
+    ]
+  }
+}
