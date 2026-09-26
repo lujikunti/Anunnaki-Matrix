@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "node tests/validate-growth.mjs && node tests/validate-operator-profiles.mjs && node tests/validate-gc-foundry-training.mjs"
+    "test": "node tests/validate-growth.mjs && node tests/validate-operator-profiles.mjs && node tests/validate-gc-foundry-training.mjs && node tests/validate-real-foundry-canary.mjs"
   },
   "engines": {
     "node": ">=22"
