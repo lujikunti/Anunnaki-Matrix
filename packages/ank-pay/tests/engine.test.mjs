@@ -83,6 +83,9 @@ test("provider create success is not settlement until independently verified", a
   assert.equal(verified.status, "succeeded");
   assert.ok(verified.settlementVerifiedAt);
   assert.equal(verified.entitlement.state, "sandbox_active");
+  assert.equal(verified.receipt.content.paymentStatus, "succeeded");
+  assert.match(verified.receipt.contentHash, /^[0-9a-f]{64}$/);
+  assert.equal((await pay.listReceipts(created.id)).length, 1);
   assert.equal(provider.counts.verifies, 1);
 });
 
@@ -121,4 +124,42 @@ test("verified failed state can later become succeeded, matching Peach webhook s
   const succeeded = await pay.verifyPayment({ paymentId: created.id });
   assert.equal(succeeded.status, "succeeded");
   assert.equal((await pay.listEntitlements(created.id)).length, 1);
+});
+
+
+test("authenticated webhook hint triggers independent provider verification before access", async () => {
+  const provider = makeProvider({ verifyStatus: "succeeded" });
+  const pay = createAnkPay({ provider, ledger: createMemoryLedger() });
+  const created = await pay.createPayment(intent);
+  const result = await pay.processWebhookHint({
+    webhookId: "wh-001",
+    rawHash: "a".repeat(64),
+    normalized: {
+      providerReference: created.providerReference,
+      merchantTransactionId: created.merchantTransactionId,
+      providerCode: "000.000.000",
+      providerTimestamp: "2026-09-26T03:00:00Z",
+      status: "succeeded",
+      paymentBrand: "PAYSHAP",
+      paymentType: "DB",
+      amount: "250.00",
+      currency: "ZAR",
+      notificationType: "PAYMENT"
+    }
+  });
+  assert.equal(provider.counts.verifies, 1);
+  assert.equal(result.status, "succeeded");
+  assert.equal(result.entitlement.state, "sandbox_active");
+  assert.ok(result.receipt);
+});
+
+test("reconciliation snapshot surfaces settlements, receipts and open issues", async () => {
+  const pay = createAnkPay({ provider: makeProvider({ verifyStatus: "succeeded" }), ledger: createMemoryLedger() });
+  const created = await pay.createPayment(intent);
+  await pay.verifyPayment({ paymentId: created.id });
+  const snapshot = await pay.reconciliationSnapshot();
+  assert.equal(snapshot.totals.payments, 1);
+  assert.equal(snapshot.totals.succeeded, 1);
+  assert.equal(snapshot.totals.receipts, 1);
+  assert.equal(snapshot.rows[0].entitlements[0].state, "sandbox_active");
 });
