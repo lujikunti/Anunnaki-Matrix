@@ -4,7 +4,7 @@ const p="api/training/gc-foundry-canary.mjs";
 const s=fs.readFileSync(new URL("../../../"+p,import.meta.url),"utf8");
 for(const x of [
   'openai/gpt-5.6-sol',
-  'VERCEL_OIDC_TOKEN',
+  'getVercelOidcToken',
   'https://ai-gateway.vercel.sh/v1/chat/completions',
   'LEGAL_INTAKE_TRIAGE',
   'CANDIDATE_DECISION_SUPPORT',
