@@ -339,5 +339,20 @@
     "stale_law_or_superseded_source"
   ],
   "graduation_rule": "No Foundry-trained capability earns SUPERVISED or AUTONOMOUS_REVERSIBLE status from this manifest. Advancement requires observed PIE apprenticeship evidence and any applicable professional review.",
-  "live_snapshot_note": "As of 2026-09-25 the GC Foundry contains live source, mining, semantic-extraction and Lawyer School data. Runtime data counts are observational and are not hardcoded into this curriculum."
+  "live_snapshot_note": "As of 2026-09-25 the GC Foundry contains live source, mining, semantic-extraction and Lawyer School data. Runtime data counts are observational and are not hardcoded into this curriculum.",
+  "simulation_runtime": {
+    "product_repo": "lujikunti/the-general-counsel",
+    "function_slug": "ank-foundry-sim",
+    "scenario_policy": "ANK_PIE_GC_FOUNDRY_SIMULATIONS_V1",
+    "scenario_count": 18,
+    "mapped_agent_capability_pairs": 50,
+    "capability_runtime_enabled": false,
+    "max_stage": "SUPERVISED",
+    "trust_credit_default": false,
+    "trust_credit_control": "foundry_simulation_trust_credit_enabled",
+    "approved_model_provider_required": true,
+    "manual_or_bootstrap_runs_count_toward_trust": false,
+    "professional_authority_conferred": false,
+    "external_action_authority_conferred": false
+  }
 }
