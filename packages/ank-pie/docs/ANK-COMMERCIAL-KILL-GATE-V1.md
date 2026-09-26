@@ -50,7 +50,7 @@ Deep capability brochures, demo scripts and website product pages are generated 
 
 ## Current commercial focus — 26 Sep 2026
 
-GC: test Payment Proof Engine, Claim Readiness Pack, Notice Radar and Deal Control Pack. Park the rest of the 40-product fixed-scope catalogue until first-party demand or paid evidence justifies re-entry. Keep the Control Room subscription parked until GC's own commercial-integrity gate for a field-verified paid matter is satisfied.
+GC: test Payment Proof Engine, Claim Readiness Pack and Notice Radar. Deal Control Pack was red-teamed back to PARK because its need is broader and less urgent. Park the rest of the 40-product fixed-scope catalogue until first-party demand or paid evidence justifies re-entry. Keep the Control Room subscription parked until GC's own commercial-integrity gate for a field-verified paid matter is satisfied.
 
 MN: do not create a separate exam SKU. Test the existing R99 MN+ 30-day pass, using Matric exam rescue as a campaign/use-case angle while preserving the free Grade 12 core. Live selling remains blocked until the Yoco production payment path is verified.
 
