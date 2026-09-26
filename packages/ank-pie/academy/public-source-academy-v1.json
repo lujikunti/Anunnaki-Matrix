@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_PIE_PUBLIC_SOURCE_ACADEMY_V1",
+  "policy_version": "2026-09-26.1",
+  "standards_spine_ref": "ANK_PIE_STANDARDS_SPINE_V1",
+  "model_weight_training": false,
+  "purpose": "Curated retrieval, curriculum and evaluation sources for PIE agents with provenance, rights and currentness controls.",
+  "admission_pipeline": [
+    "DISCOVER",
+    "IDENTIFY_AUTHORITY",
+    "CHECK_JURISDICTION",
+    "CHECK_CURRENTNESS",
+    "CHECK_RIGHTS",
+    "CLASSIFY_SOURCE",
+    "EXTRACT_ALLOWED_FACTS_OR_CONTROL_LOGIC",
+    "CITE",
+    "REVIEW_IF_HIGH_RISK"
+  ],
+  "required_metadata": [
+    "source_id",
+    "authority",
+    "title",
+    "url",
+    "source_class",
+    "status",
+    "jurisdiction_or_region",
+    "retrieved_at_or_checked_at",
+    "rights_basis",
+    "currentness_result"
+  ],
+  "rights_rules": {
+    "OFFICIAL_PUBLIC_REFERENCE": "Reference/retrieve only unless the specific licence or law permits storage/reuse.",
+    "OPEN_GUIDANCE": "Admit text only when the licence permits the intended storage/reuse; otherwise use retrieval and citations.",
+    "LICENSED_METADATA_ONLY": "Store metadata and control mapping only; full text requires a lawful ANK licence/permission.",
+    "WITHDRAWN_REFERENCE_ONLY": "May be retained as historical/currentness evidence but never promoted as current authority.",
+    "HISTORICAL_REFERENCE_ONLY": "May train chronology/currentness recognition but not current-law/current-policy claims."
+  },
+  "training_modes": [
+    "RAG_REFERENCE",
+    "CURRICULUM_SUMMARY",
+    "CONTROL_MAPPING",
+    "EVALUATION_CASE",
+    "RED_TEAM_CASE"
+  ],
+  "forbidden": [
+    "UNLICENSED_FULL_TEXT_HARVEST",
+    "SOURCE_LAUNDERING",
+    "REMOVING_COPYRIGHT_OR_RIGHTS_METADATA",
+    "PRESENTING_WITHDRAWN_POLICY_AS_CURRENT",
+    "PRESENTING_HISTORICAL_RULE_AS_CURRENT",
+    "UNATTRIBUTED_PROFESSIONAL_AUTHORITY",
+    "MODEL_WEIGHT_TRAINING_CLAIM_WITHOUT_ACTUAL_TRAINING"
+  ]
+}
