@@ -1,0 +1,311 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "ANK_PIE_STANDARDS_SPINE_V1",
+  "policy_version": "2026-09-26.1",
+  "purpose": "African-first, jurisdiction-aware standards and public-source spine for governed ANK PIE agents.",
+  "legal_note": "This registry is a control map, not legal advice. Applicability must be resolved for the relevant jurisdiction, sector, person and action before a source is treated as binding.",
+  "authority_order": [
+    "APPLICABLE_BINDING_LAW_AND_REGULATOR",
+    "APPLICABLE_AU_OR_REGIONAL_BINDING_INSTRUMENT",
+    "AFRICAN_NATIONAL_AND_SECTOR_REGULATORY_GUIDANCE",
+    "AFRICAN_STANDARDS_AND_POLICY_FRAMEWORKS",
+    "INTERNATIONAL_STANDARDS_AND_SECURITY_FRAMEWORKS",
+    "ANK_INTERNAL_CONSTITUTION_AND_ROLE_POLICY"
+  ],
+  "conflict_rules": [
+    "Applicable binding law prevails over non-binding standards and ANK policy.",
+    "An AU or regional instrument is treated as binding only after jurisdictional applicability is verified.",
+    "Where multiple non-binding controls apply, retain the stricter safety/privacy/security control unless it conflicts with binding law.",
+    "African requirements are first-class inputs and may not be silently replaced by US, EU or other foreign defaults.",
+    "A draft, withdrawn, superseded or historical instrument may inform research but may not be represented as current binding authority.",
+    "A standard whose full text is licensed may be indexed by public metadata only until ANK holds a lawful licence or other permission for the intended use."
+  ],
+  "source_classes": {
+    "OFFICIAL_PUBLIC_REFERENCE": {
+      "full_text_default": "REFERENCE_OR_RETRIEVAL_ONLY",
+      "normative_use": "IF_CURRENT_AND_APPLICABLE"
+    },
+    "OPEN_GUIDANCE": {
+      "full_text_default": "ADMIT_IF_LICENCE_PERMITS",
+      "normative_use": "GUIDANCE_ONLY"
+    },
+    "LICENSED_METADATA_ONLY": {
+      "full_text_default": "DO_NOT_INGEST",
+      "normative_use": "USE_METADATA_AND_LICENSED_ACCESS_ONLY"
+    },
+    "WITHDRAWN_REFERENCE_ONLY": {
+      "full_text_default": "REFERENCE_ONLY",
+      "normative_use": "PROHIBITED_AS_CURRENT_AUTHORITY"
+    },
+    "HISTORICAL_REFERENCE_ONLY": {
+      "full_text_default": "REFERENCE_ONLY",
+      "normative_use": "PROHIBITED_AS_CURRENT_AUTHORITY"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "AU_CONTINENTAL_AI_STRATEGY_2024",
+      "region": "AFRICA",
+      "authority": "African Union",
+      "title": "Continental Artificial Intelligence Strategy",
+      "url": "https://au.int/en/documents/20240809/continental-artificial-intelligence-strategy",
+      "source_class": "OFFICIAL_PUBLIC_REFERENCE",
+      "status": "CURRENT_POLICY_FRAMEWORK",
+      "binding": false,
+      "controls": [
+        "AFRICA_CENTRIC_AI",
+        "ETHICAL_RESPONSIBLE_EQUITABLE_AI",
+        "CULTURAL_AND_DEVELOPMENT_CONTEXT",
+        "REGIONAL_COOPERATION"
+      ]
+    },
+    {
+      "source_id": "AU_DATA_POLICY_FRAMEWORK_2022",
+      "region": "AFRICA",
+      "authority": "African Union",
+      "title": "AU Data Policy Framework",
+      "url": "https://au.int/en/documents/20220728/au-data-policy-framework",
+      "source_class": "OFFICIAL_PUBLIC_REFERENCE",
+      "status": "CURRENT_POLICY_FRAMEWORK",
+      "binding": false,
+      "controls": [
+        "DATA_GOVERNANCE",
+        "DIGITAL_RIGHTS",
+        "CROSS_BORDER_DATA",
+        "TRUSTED_DATA_ENVIRONMENT",
+        "AFCFTA_DATA_CONTEXT"
+      ]
+    },
+    {
+      "source_id": "AU_MALABO_CONVENTION_2014",
+      "region": "AFRICA",
+      "authority": "African Union",
+      "title": "African Union Convention on Cyber Security and Personal Data Protection",
+      "url": "https://www.au.int/en/treaties/african-union-convention-cyber-security-and-personal-data-protection",
+      "source_class": "OFFICIAL_PUBLIC_REFERENCE",
+      "status": "IN_FORCE_CONTINENTALLY_SINCE_2023_06_08",
+      "binding": "VERIFY_STATE_RATIFICATION_AND_APPLICABILITY",
+      "controls": [
+        "CYBERSECURITY",
+        "PERSONAL_DATA",
+        "CRITICAL_INFRASTRUCTURE",
+        "ELECTRONIC_TRANSACTIONS"
+      ]
+    },
+    {
+      "source_id": "ARSO_STRATEGIC_PLAN_2022_2027",
+      "region": "AFRICA",
+      "authority": "African Organisation for Standardisation",
+      "title": "ARSO Strategic Plan 2022–2027",
+      "url": "https://www.arso-oran.org/arso-strategic-plan-2022-to-2027/",
+      "source_class": "OFFICIAL_PUBLIC_REFERENCE",
+      "status": "CURRENT_STRATEGIC_REFERENCE",
+      "binding": false,
+      "controls": [
+        "AFRICAN_STANDARDS_HARMONISATION",
+        "4IR_STANDARDISATION",
+        "AFCFTA_ALIGNMENT",
+        "CONFORMITY_ASSESSMENT"
+      ]
+    },
+    {
+      "source_id": "ARSO_A4IR_STRATEGY_2021_2025",
+      "region": "AFRICA",
+      "authority": "African Organisation for Standardisation / IEEE SA",
+      "title": "African 4IR Standardization Strategy and Roadmap",
+      "url": "https://www.arso-oran.org/african-standardization-strategy-and-roadmap-for-the-fourth-industrial-revolution/",
+      "source_class": "HISTORICAL_REFERENCE_ONLY",
+      "status": "PROGRAMME_PERIOD_ENDED_2025",
+      "binding": false,
+      "controls": [
+        "4IR_INTEROPERABILITY",
+        "STANDARDISATION_CAPACITY",
+        "BALANCED_DATA_POLICY",
+        "MEASUREMENT_LEARNING_REPORTING"
+      ]
+    },
+    {
+      "source_id": "SA_POPIA_2013",
+      "region": "SOUTH_AFRICA",
+      "authority": "Republic of South Africa",
+      "title": "Protection of Personal Information Act 4 of 2013",
+      "url": "https://www.gov.za/documents/protection-personal-information-act",
+      "source_class": "OFFICIAL_PUBLIC_REFERENCE",
+      "status": "IN_FORCE",
+      "binding": "WHEN_APPLICABLE",
+      "controls": [
+        "PERSONAL_INFORMATION",
+        "AUTOMATED_DECISION_MAKING",
+        "CROSS_BORDER_PROCESSING",
+        "DATA_SUBJECT_RIGHTS"
+      ]
+    },
+    {
+      "source_id": "SA_DRAFT_AI_POLICY_2026_WITHDRAWN",
+      "region": "SOUTH_AFRICA",
+      "authority": "Republic of South Africa",
+      "title": "Draft South Africa Artificial Intelligence Policy (withdrawn June 2026)",
+      "url": "https://www.gov.za/documents/notices/promotion-access-information-act-withdrawal-draft-south-africa-national",
+      "source_class": "WITHDRAWN_REFERENCE_ONLY",
+      "status": "WITHDRAWN_2026_06",
+      "binding": false,
+      "controls": [
+        "CURRENTNESS_TEST_CASE"
+      ],
+      "prohibition": "MUST_NOT_BE_TREATED_AS_CURRENT_FINAL_POLICY_OR_BINDING_AUTHORITY"
+    },
+    {
+      "source_id": "SABS_STANDARDS_AUTHORITY",
+      "region": "SOUTH_AFRICA",
+      "authority": "South African Bureau of Standards",
+      "title": "SABS / SANS standards catalogue authority",
+      "url": "https://www.sabs.co.za/",
+      "source_class": "LICENSED_METADATA_ONLY",
+      "status": "VERIFY_STANDARD_BY_STANDARD",
+      "binding": false,
+      "controls": [
+        "SANS_ADOPTION_VERIFICATION",
+        "LICENSED_STANDARD_ACCESS"
+      ],
+      "prohibition": "DO_NOT_ASSUME_A_SPECIFIC_ISO_STANDARD_HAS_A_SANS_ADOPTION_WITHOUT_CURRENT_VERIFICATION"
+    },
+    {
+      "source_id": "ISO_IEC_42001_2023",
+      "region": "INTERNATIONAL",
+      "authority": "ISO/IEC",
+      "title": "ISO/IEC 42001:2023 Artificial intelligence — Management system",
+      "url": "https://www.iso.org/standard/42001",
+      "source_class": "LICENSED_METADATA_ONLY",
+      "status": "PUBLISHED",
+      "binding": false,
+      "controls": [
+        "AI_MANAGEMENT_SYSTEM",
+        "GOVERNANCE",
+        "CONTINUAL_IMPROVEMENT"
+      ]
+    },
+    {
+      "source_id": "ISO_IEC_23894_2023",
+      "region": "INTERNATIONAL",
+      "authority": "ISO/IEC",
+      "title": "ISO/IEC 23894:2023 Artificial intelligence — Guidance on risk management",
+      "url": "https://www.iso.org/standard/77304.html",
+      "source_class": "LICENSED_METADATA_ONLY",
+      "status": "PUBLISHED",
+      "binding": false,
+      "controls": [
+        "AI_RISK_MANAGEMENT"
+      ]
+    },
+    {
+      "source_id": "ISO_IEC_5338_2023",
+      "region": "INTERNATIONAL",
+      "authority": "ISO/IEC",
+      "title": "ISO/IEC 5338:2023 Artificial intelligence — AI system life cycle processes",
+      "url": "https://www.iso.org/standard/81118.html",
+      "source_class": "LICENSED_METADATA_ONLY",
+      "status": "PUBLISHED",
+      "binding": false,
+      "controls": [
+        "AI_LIFECYCLE"
+      ]
+    },
+    {
+      "source_id": "ISO_IEC_22989_2022",
+      "region": "INTERNATIONAL",
+      "authority": "ISO/IEC",
+      "title": "ISO/IEC 22989:2022 Artificial intelligence concepts and terminology",
+      "url": "https://www.iso.org/standard/74296.html",
+      "source_class": "LICENSED_METADATA_ONLY",
+      "status": "PUBLISHED",
+      "binding": false,
+      "controls": [
+        "AI_TERMINOLOGY"
+      ]
+    },
+    {
+      "source_id": "NIST_AI_RMF_AIRC",
+      "region": "INTERNATIONAL",
+      "authority": "NIST",
+      "title": "AI Risk Management Framework and AI Resource Center",
+      "url": "https://airc.nist.gov/",
+      "source_class": "OPEN_GUIDANCE",
+      "status": "CURRENT_WITH_RMF_REVISION_NOTED",
+      "binding": false,
+      "controls": [
+        "GOVERN",
+        "MAP",
+        "MEASURE",
+        "MANAGE",
+        "TEVV"
+      ]
+    },
+    {
+      "source_id": "NIST_SP_800_218A_2024",
+      "region": "INTERNATIONAL",
+      "authority": "NIST",
+      "title": "SP 800-218A Secure Software Development Practices for Generative AI and Dual-Use Foundation Models",
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/a/final",
+      "source_class": "OPEN_GUIDANCE",
+      "status": "FINAL",
+      "binding": false,
+      "controls": [
+        "SECURE_AI_SDLC",
+        "SUPPLY_CHAIN",
+        "SOFTWARE_SECURITY"
+      ]
+    },
+    {
+      "source_id": "NIST_AI_AGENT_STANDARDS_INITIATIVE_2026",
+      "region": "INTERNATIONAL",
+      "authority": "NIST CAISI",
+      "title": "AI Agent Standards Initiative",
+      "url": "https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure",
+      "source_class": "OPEN_GUIDANCE",
+      "status": "ACTIVE_INITIATIVE",
+      "binding": false,
+      "controls": [
+        "AGENT_IDENTITY",
+        "AUTHORIZATION",
+        "INTEROPERABILITY",
+        "SECURITY"
+      ]
+    },
+    {
+      "source_id": "OWASP_AGENT_CONTROL_STANDARD_2026",
+      "region": "INTERNATIONAL",
+      "authority": "OWASP GenAI Security Project",
+      "title": "Agent Control Standard (ACS)",
+      "url": "https://genai.owasp.org/resource/agent-control-standard-acs/",
+      "source_class": "OPEN_GUIDANCE",
+      "status": "CURRENT",
+      "binding": false,
+      "controls": [
+        "INSPECTABILITY",
+        "TRACEABILITY",
+        "INSTRUMENTATION",
+        "RUNTIME_POLICY_ENFORCEMENT"
+      ]
+    },
+    {
+      "source_id": "OWASP_AGENTIC_TOP10_2026",
+      "region": "INTERNATIONAL",
+      "authority": "OWASP GenAI Security Project",
+      "title": "OWASP Top 10 for Agentic Applications 2026",
+      "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "source_class": "OPEN_GUIDANCE",
+      "status": "CURRENT",
+      "binding": false,
+      "controls": [
+        "GOAL_HIJACKING",
+        "TOOL_MISUSE",
+        "IDENTITY_PRIVILEGE_ABUSE",
+        "MEMORY_POISONING",
+        "INSECURE_INTER_AGENT_COMMUNICATION",
+        "CASCADING_FAILURES",
+        "TRUST_EXPLOITATION",
+        "ROGUE_AGENT"
+      ]
+    }
+  ]
+}
