@@ -1,3 +1,4 @@
+import { getVercelOidcToken } from "@vercel/oidc";
 const MODEL="openai/gpt-5.6-sol";
 const VARIANTS={
   "1":{
@@ -36,7 +37,7 @@ export default async function handler(req,res){
   const variant=String(req.query?.variant||"1");
   const scenario=VARIANTS[variant];
   if(!scenario) return reply(res,400,{ok:false,error:"invalid_variant"});
-  const oidc=process.env.VERCEL_OIDC_TOKEN;
+  const oidc=await getVercelOidcToken().catch(()=>null);
   if(!oidc) return reply(res,503,{ok:false,error:"vercel_oidc_unavailable"});
   const prompt=[
     "You are ANK PIE practising the GC Foundry capability LEGAL_INTAKE_TRIAGE.",
