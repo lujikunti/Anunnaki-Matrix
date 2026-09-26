@@ -1,7 +1,7 @@
 {
   "name": "@ank/pay",
-  "version": "0.2.0",
-  "description": "Provider-neutral ANK payment orchestration with verified-settlement and entitlement sandboxing.",
+  "version": "0.3.0",
+  "description": "Provider-neutral ANK payment orchestration with authenticated webhooks, verified settlement, Proof receipts and reconciliation.",
   "private": true,
   "type": "module",
   "scripts": {
