@@ -353,6 +353,9 @@
     "approved_model_provider_required": true,
     "manual_or_bootstrap_runs_count_toward_trust": false,
     "professional_authority_conferred": false,
-    "external_action_authority_conferred": false
+    "external_action_authority_conferred": false,
+    "provider_status": "BLOCKED_BILLING",
+    "provider_status_detail": "Vercel AI Gateway OIDC authentication succeeded, but requests returned HTTP 403 because the Vercel team has no valid credit card on file. No model evidence or trust credit was produced.",
+    "last_provider_probe": "2026-09-26"
   }
 }
