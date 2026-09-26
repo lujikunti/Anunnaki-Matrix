@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0.0",
+  "portfolio_id": "ANK_FAST_SELL_PORTFOLIO_2026_09_26",
+  "as_of": "2026-09-26",
+  "decision_note": "This is a commercial test portfolio, not a guarantee of future sales. TEST_NOW means the offer has enough evidence to justify a lean paid-market test. Only paid validation may promote it to SELL_NOW.",
+  "gc": {
+    "source_catalog": "the-general-counsel/gc-control-product-library-v1.json",
+    "default_for_unlisted_fixed_scope_products": "PARK",
+    "control_room_subscription": {
+      "status": "PARK",
+      "reason": "Current GC commercial-integrity policy says no public recurring subscription until a complete paid matter is field-verified."
+    },
+    "test_now": [
+      {
+        "product_key": "payment_proof_engine",
+        "product_name": "Payment Proof Engine",
+        "existing_price_zar": 6500,
+        "status": "TEST_NOW",
+        "internal_fast_sell_score": 90,
+        "buyer": "SME contractor, supplier or service business with an invoice or payment milestone at risk",
+        "urgent_problem": "Payment is delayed, challenged or likely to be challenged while proof is scattered.",
+        "swot": {
+          "strengths": [
+            "Direct link to cash collection",
+            "Output is concrete and easy to demo",
+            "Existing GC delivery is already scoped around evidence maps, proof gaps and an invoice defence file"
+          ],
+          "weaknesses": [
+            "Requires complete client records",
+            "May need professional review when legal conclusions are requested",
+            "Value is weaker when the client has no underlying proof"
+          ],
+          "opportunities": [
+            "2026 construction-market evidence shows delayed payments remain a material operational problem",
+            "Can lead naturally into claim readiness without inventing a new product"
+          ],
+          "threats": [
+            "Traditional lawyers, claims consultants and internal commercial teams compete for the same budget",
+            "Poor source records can make the result less useful",
+            "Overclaiming legal effect would breach GC's professional boundary"
+          ]
+        },
+        "demand_evidence": [
+          {
+            "source": "Industry Insight Preferred Supplier Survey, 4 Aug 2026",
+            "signal": "Contractors on 38 active projects worth about R11bn reported payment delays among the pressures affecting project delivery.",
+            "kind": "public_market"
+          },
+          {
+            "source": "MDA Attorneys analysis reported by Polity, 19 May 2026",
+            "signal": "Payment failures were the largest category in the firm's construction adjudication caseload.",
+            "kind": "public_market"
+          }
+        ],
+        "pricing": {
+          "status": "EXISTING_PRICE_REQUIRES_COST_REVALIDATION",
+          "tested_price_zar": 6500
+        },
+        "brochure_allowed": true,
+        "engineering_expansion_allowed": false
+      },
+      {
+        "product_key": "claim_readiness_pack",
+        "product_name": "Claim Readiness Pack",
+        "existing_price_zar": 8500,
+        "status": "TEST_NOW",
+        "internal_fast_sell_score": 84,
+        "buyer": "Contractor, subcontractor, supplier or SME facing a live payment, delay or scope dispute",
+        "urgent_problem": "A dispute is forming and the business needs chronology, notices and evidence organised before leverage is lost.",
+        "swot": {
+          "strengths": [
+            "Urgent use case with a clear deadline",
+            "Concrete deliverables reduce ambiguity",
+            "Uses existing GC chronology, notice and evidence capabilities"
+          ],
+          "weaknesses": [
+            "Buyer may already be in lawyer-led dispute mode",
+            "Document volume can increase delivery cost",
+            "Professional review may be required for legal conclusions"
+          ],
+          "opportunities": [
+            "Payment and delay disputes create a natural trigger for purchase",
+            "Can reduce time spent preparing a matter for external counsel"
+          ],
+          "threats": [
+            "Outside counsel may bundle this work into legal fees",
+            "Late-stage disputes can contain missing facts that cannot be recreated",
+            "A generic pack would fail if contract form and edition are not respected"
+          ]
+        },
+        "demand_evidence": [
+          {
+            "source": "MDA Attorneys analysis reported by Polity, 19 May 2026",
+            "signal": "Payment failures were the dominant dispute category in the reported adjudication caseload, with extension-of-time issues also material.",
+            "kind": "public_market"
+          },
+          {
+            "source": "Industry Insight Preferred Supplier Survey, 4 Aug 2026",
+            "signal": "Delayed payments and administrative bottlenecks were reported across active South African construction projects.",
+            "kind": "public_market"
+          }
+        ],
+        "pricing": {
+          "status": "EXISTING_PRICE_REQUIRES_COST_REVALIDATION",
+          "tested_price_zar": 8500
+        },
+        "brochure_allowed": true,
+        "engineering_expansion_allowed": false
+      },
+      {
+        "product_key": "notice_radar",
+        "product_name": "Notice Radar",
+        "existing_price_zar": 3500,
+        "status": "TEST_NOW",
+        "internal_fast_sell_score": 81,
+        "buyer": "Construction contractor or subcontractor working under a notice-driven contract",
+        "urgent_problem": "A live event has triggered contractual notice clocks and the team risks missing them.",
+        "swot": {
+          "strengths": [
+            "Low-ticket entry offer",
+            "Time-sensitive pain encourages action",
+            "Easy before-and-after demo: event to trigger to notice calendar"
+          ],
+          "weaknesses": [
+            "Narrower buyer segment than general contract review",
+            "Accuracy depends on exact contract form, edition and amendments",
+            "Requires disciplined current project information"
+          ],
+          "opportunities": [
+            "Can be a wedge into broader obligation and claim-readiness work",
+            "Construction procurement and delivery remain procedurally complex"
+          ],
+          "threats": [
+            "Calendar/reminder tools are cheaper substitutes when the contract logic is simple",
+            "A missed or wrongly mapped trigger can create material risk",
+            "Professional responsibility boundaries must stay explicit"
+          ]
+        },
+        "demand_evidence": [
+          {
+            "source": "cidb procurement prescripts and Draft SFU 2026",
+            "signal": "South African construction procurement operates under detailed public-sector prescripts and updated procedural requirements.",
+            "kind": "public_authority"
+          },
+          {
+            "source": "Industry Insight Preferred Supplier Survey, 4 Aug 2026",
+            "signal": "Administrative bottlenecks and delivery delays remain active project problems, increasing the value of disciplined notice control.",
+            "kind": "public_market"
+          }
+        ],
+        "pricing": {
+          "status": "EXISTING_PRICE_REQUIRES_COST_REVALIDATION",
+          "tested_price_zar": 3500
+        },
+        "brochure_allowed": true,
+        "engineering_expansion_allowed": false
+      }
+    ],
+    "parked": [
+      {
+        "product_key": "deal_control_pack",
+        "product_name": "Deal Control Pack",
+        "existing_price_zar": 4500,
+        "status": "PARK",
+        "internal_fast_sell_score": 76,
+        "buyer": "Founder-led SME or commercial team about to sign a material customer, supplier or project deal",
+        "urgent_problem": "The business needs a fast view of money, authority, dates, notices and proof before signature.",
+        "swot": {
+          "strengths": [
+            "Broad SME relevance",
+            "Pre-signing trigger is easy to understand",
+            "Existing output is concrete and bounded"
+          ],
+          "weaknesses": [
+            "Less urgent than cash recovery",
+            "Competes with conventional contract review",
+            "Buyer may not perceive risk until a problem occurs"
+          ],
+          "opportunities": [
+            "Can become the front door for GC without a subscription commitment",
+            "Can expose downstream needs such as obligation control or payment proof"
+          ],
+          "threats": [
+            "Free AI contract summaries can anchor buyer expectations at zero",
+            "Legal-advice boundaries may confuse buyers if messaging is not precise",
+            "Long bespoke contracts can erode fixed-fee margin"
+          ]
+        },
+        "demand_evidence": [
+          {
+            "source": "SpotDraft State of Legal Ops summary, Sep 2026",
+            "signal": "Contract turnaround and budget constraints remain major legal-operations concerns for lean teams.",
+            "kind": "public_market"
+          },
+          {
+            "source": "GC existing product architecture",
+            "signal": "The product is already implemented as a fixed-scope 2–4 business-day offer rather than a new concept.",
+            "kind": "first_party_product_truth"
+          }
+        ],
+        "pricing": {
+          "status": "EXISTING_PRICE_REQUIRES_COST_REVALIDATION",
+          "tested_price_zar": 4500
+        },
+        "brochure_allowed": false,
+        "engineering_expansion_allowed": false,
+        "park_reason": "Broad pre-signing need is less urgent than cash/payment/claims and current independent demand evidence is not strong enough for a fast-sell test."
+      }
+    ]
+  },
+  "mn": {
+    "commercial_rule": "Do not create a new exam-season SKU. Test the existing MN+ 30-day pass and use Matric exam rescue only as a campaign/use-case angle. Grade 12 core learning and the existing free Matric paper hub remain free.",
+    "test_now": [
+      {
+        "product_key": "mn_plus_30d",
+        "product_name": "MN+ 30-day pass",
+        "existing_price_zar": 99,
+        "status": "TEST_NOW_BLOCKED",
+        "blocker": "Live Yoco credentials, registered webhook and controlled live payment proof are not yet verified.",
+        "internal_fast_sell_score": 92,
+        "buyer": "South African parent or caregiver wanting a low-cost month of premium learning support",
+        "urgent_problem": "A learner needs focused repair and exam support without the hourly cost of private tutoring.",
+        "campaign_angle": "Matric exam rescue may be used as a time-sensitive acquisition angle, but it is not a separate paid SKU and may not paywall the free Grade 12 core.",
+        "swot": {
+          "strengths": [
+            "Very low price relative to private tutoring",
+            "Existing 30-day product and entitlement code already exist",
+            "MN already has free original Matric Maths mock sets and Physical Sciences mocks plus a paper-to-repair workflow"
+          ],
+          "weaknesses": [
+            "Live payment release is not yet proven",
+            "Grade 12 broader product remains beta and cannot be marketed as a turnkey Matric school",
+            "Free Grade 12 core reduces the amount of content that can legitimately sit behind the paywall"
+          ],
+          "opportunities": [
+            "2026 NSC exams begin in October, creating a real time-sensitive preparation window",
+            "Private tutoring prices create a strong affordability contrast for families seeking supplemental help"
+          ],
+          "threats": [
+            "A current local competitor markets AI Matric preparation at R149 per month",
+            "Parents may default to free past papers or general AI tools",
+            "Any claim that implies guaranteed marks or complete CAPS coverage would be misleading"
+          ]
+        },
+        "demand_evidence": [
+          {
+            "source": "Department of Basic Education 2026 NSC timetable",
+            "signal": "The October/November 2026 NSC examination cycle begins in mid-October, creating an immediate exam-preparation window.",
+            "kind": "public_authority"
+          },
+          {
+            "source": "Daily Maverick/Teneo tutoring analysis, 25 Sep 2026",
+            "signal": "Private Grade 12 tutoring averaged hundreds of rand per hour, with Matric Mathematics materially higher, supporting an affordability pain point.",
+            "kind": "public_market"
+          },
+          {
+            "source": "ExamPrepSA current pricing, Sep 2026",
+            "signal": "A South African AI Matric-prep competitor publicly charges R149 per month, showing a live paid category.",
+            "kind": "competitor_price"
+          }
+        ],
+        "product_truth": [
+          "MN+ 30-day pass is coded at R99 and non-recurring.",
+          "Free Grade 12 core learning remains R0.",
+          "MN has original Maths mock sets 001–005, Physical Sciences mock 001 and a paper-to-repair workflow.",
+          "Grade 12 remains beta and requires further field testing and subject materialisation before any turnkey-school claim."
+        ],
+        "pricing": {
+          "status": "SERVER_AUTHORITATIVE_EXISTING_PRICE",
+          "tested_price_zar": 99
+        },
+        "brochure_allowed": true,
+        "engineering_expansion_allowed": false
+      }
+    ]
+  }
+}
