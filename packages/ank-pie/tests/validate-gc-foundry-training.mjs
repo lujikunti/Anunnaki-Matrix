@@ -16,4 +16,11 @@ for(const c of m.capabilities){
 for(const x of ['raw legacy source text','quarantined Foundry semantic extractions','semantic extractions whose source-rights/provenance link is incomplete'])if(!m.sources.excluded_until_admitted.includes(x))fail('missing source exclusion '+x);
 for(const x of ['PROFESSIONAL_JUDGMENT_IS_HUMAN_RESERVED','UNKNOWN_OR_MISSING_EVIDENCE_REMAINS_UNKNOWN','PROVENANCE_SURVIVES_OUTPUT_GENERATION'])if(!m.global_invariants.includes(x))fail('missing invariant '+x);
 if(JSON.stringify(m).includes('AUTONOMOUS_READY'))fail('curriculum must not self-graduate');
+
+const sim=m.simulation_runtime;
+if(!sim||sim.function_slug!=='ank-foundry-sim')fail('Foundry simulation runtime contract missing');
+if(sim.scenario_count!==18||sim.mapped_agent_capability_pairs!==50)fail('Foundry simulation coverage drift');
+if(sim.capability_runtime_enabled!==false||sim.max_stage!=='SUPERVISED'||sim.trust_credit_default!==false)fail('Foundry simulation authority boundary weakened');
+if(sim.manual_or_bootstrap_runs_count_toward_trust!==false||sim.professional_authority_conferred!==false||sim.external_action_authority_conferred!==false)fail('Foundry simulation trust/authority boundary weakened');
+
 console.log('GC Foundry PIE training QA passed');
