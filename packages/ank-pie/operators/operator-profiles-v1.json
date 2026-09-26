@@ -465,7 +465,16 @@
         "commercial_package_draft",
         "negotiation_simulation",
         "onboarding_handoff",
-        "retention_signal_analysis"
+        "retention_signal_analysis",
+        "swot_analysis",
+        "demand_evidence_assessment",
+        "unit_economics_draft",
+        "fast_sell_gate",
+        "commercial_product_passport",
+        "brochure_brief",
+        "demo_asset_brief",
+        "website_product_page_draft",
+        "product_kill_recommendation"
       ],
       "existing_capabilities_reused": [
         "market_signal_scan",
@@ -501,9 +510,15 @@
         "impersonation",
         "source_code_transfer",
         "invented_testimonial",
-        "invented_capability"
+        "invented_capability",
+        "invent_market_demand",
+        "invent_costs",
+        "build_new_sku_before_market_gate",
+        "count_free_interest_as_paid_validation"
       ],
-      "graduation_note": "Capability trust remains governed only by ANK_AGENT_APPRENTICESHIP_V1; this profile does not promote or authorize execution."
+      "graduation_note": "Capability trust remains governed only by ANK_AGENT_APPRENTICESHIP_V1; this profile does not promote or authorize execution.",
+      "commercialisation_policy_ref": "ANK_COMMERCIALISATION_V1",
+      "catalogue_discipline": "Default PARK. Do not request a new product build until market gate evidence exists; paid behaviour is the strongest validation."
     }
   }
 }
