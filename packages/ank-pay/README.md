@@ -1,4 +1,4 @@
-# ANK Pay v0.2 — Peach PayShap Sandbox Lifecycle
+# ANK Pay v0.3 — Peach PayShap Verified Lifecycle
 
 ANK Pay is shared payment orchestration infrastructure for Anunnaki Matrix products. Michael Noah, The General Counsel and future ANK products consume ANK payment and entitlement events; they do not import provider-specific code.
 
@@ -16,6 +16,20 @@ private DB      Peach sandbox today
 sandbox entitlement gate
 ```
 
+## v0.3 rule: webhook is a signal, not settlement
+
+Peach PayShap is asynchronous. ANK Pay may receive a webhook before, after or more than once relative to the customer redirect. ANK Pay therefore treats an authenticated webhook as a **reconciliation signal only**.
+
+A webhook may locate the payment and append an audit event. It can never directly activate MN, GC or another ANK entitlement. ANK Pay must independently query Peach's payment status, verify provider identity + transaction identity + amount + currency + `PAYSHAP`, and only then mark settlement verified.
+
+## Settlement Proof receipt
+
+After independent verification confirms success, ANK Pay issues an internal `ANK.PAY.PROOF.RECEIPT.V1` receipt. The receipt contains payment/settlement identity, entitlement state, event digest and the verification rule set, then hashes the complete canonical receipt with SHA-256.
+
+The database independently blocks a settlement receipt unless the recorded payment is already `succeeded` and has `settlement_verified_at`.
+
+Webhook plaintext is not retained. The webhook inbox stores only reconciliation fields and a SHA-256 hash of the raw provider message.
+
 ## v0.2 rule: settlement must be verified
 
 A provider create response, redirect, return URL or webhook is **not** proof of settlement. ANK Pay grants a sandbox entitlement only after a provider status query independently returns a successful state and the returned provider identity, transaction identity, amount, currency and PayShap brand match the recorded payment.
@@ -30,12 +44,15 @@ Raw payer cellphone numbers are not included in the fingerprint material stored 
 
 ## Durable sandbox ledger
 
-`schema/ank-pay-sandbox-v0.2.sql` defines a private Postgres schema with:
+`schema/ank-pay-sandbox-v0.2.sql` plus the incremental `schema/ank-pay-sandbox-v0.3.sql` define a private Postgres sandbox with:
 
 - payments;
 - payment events/audit history;
 - sandbox entitlements;
 - reconciliation issues;
+- authenticated webhook inbox metadata (no raw webhook body retention);
+- tamper-evident payment Proof receipts;
+- an internal reconciliation snapshot for operator views;
 - atomic idempotency claim;
 - provider-result recording;
 - verified-settlement transition;
@@ -87,7 +104,7 @@ The public result is provider-neutral: ANK payment id, status, provider referenc
 
 ## Still deliberately excluded
 
-v0.2 is not a live payments release. It has:
+v0.3 is still not a live payments release. It has:
 
 - no live-money endpoint;
 - no production Peach/Orchestration credential;
@@ -95,7 +112,7 @@ v0.2 is not a live payments release. It has:
 - no production MN or GC entitlement mutation;
 - no recurring/subscription engine yet;
 - no refund engine yet;
-- no direct webhook decryption/verification until a merchant webhook secret exists;
+- Payments API AES-256-GCM webhook verification primitives, but no webhook endpoint is enabled until a merchant webhook secret and durable runtime wiring exist;
 - no claim that Vercel production is current until deployment is independently verified.
 
 The existing Vercel prototype API remains disabled by default. v0.2 first proves the payment lifecycle and persistence contract before product checkout depends on it.
