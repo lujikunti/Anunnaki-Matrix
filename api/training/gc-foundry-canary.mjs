@@ -33,8 +33,6 @@ function reply(res,status,body){
 }
 export default async function handler(req,res){
   if(req.method!=="GET") return reply(res,405,{ok:false,error:"method_not_allowed"});
-  const keys=Object.keys(req.query||{});
-  if(keys.some(k=>k!=="variant")) return reply(res,400,{ok:false,error:"unsupported_query"});
   const variant=String(req.query?.variant||"1");
   const scenario=VARIANTS[variant];
   if(!scenario) return reply(res,400,{ok:false,error:"invalid_variant"});
