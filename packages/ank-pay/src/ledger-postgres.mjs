@@ -78,6 +78,21 @@ export function createPostgresLedger({ query }) {
 
     getPayment: paymentById,
 
+    async findPaymentByProviderIdentity({ provider, providerReference, merchantTransactionId }) {
+      const rows = await run(
+        `select * from ank_pay_sandbox.payments
+         where provider=$1
+           and (($2::text is not null and provider_reference=$2) or ($3::text is not null and merchant_transaction_id=$3))
+         order by created_at desc
+         limit 2`,
+        [provider, providerReference ?? null, merchantTransactionId ?? null]
+      );
+      if (rows.length !== 1) {
+        throw new AnkPayError(rows.length ? "AMBIGUOUS_PAYMENT" : "PAYMENT_NOT_FOUND", rows.length ? "Webhook matched more than one payment." : "Webhook payment not found.", { httpStatus: rows.length ? 409 : 404 });
+      }
+      return camelPayment(rows[0]);
+    },
+
     async recordProviderResult(paymentId, { phase, result }) {
       const eventKey = `${phase}:${result.providerCode ?? "none"}:${result.providerReference ?? "none"}:${result.providerTimestamp ?? randomUUID()}`;
       const rows = await run(
@@ -111,6 +126,37 @@ export function createPostgresLedger({ query }) {
       return camelEntitlement(rows[0]);
     },
 
+    async createProofReceipt(receipt) {
+      const rows = await run(
+        `insert into ank_pay_sandbox.proof_receipts(id,payment_id,receipt_type,content_hash,content)
+         values($1,$2::uuid,'payment_settlement',$3,$4::jsonb)
+         on conflict(payment_id,receipt_type) do update
+           set content=ank_pay_sandbox.proof_receipts.content
+         returning *`,
+        [receipt.id, receipt.content.paymentId, receipt.contentHash, JSON.stringify(receipt.content)]
+      );
+      const row = rows[0];
+      return {
+        id: row.id,
+        paymentId: row.payment_id,
+        contentHash: row.content_hash,
+        content: row.content,
+        createdAt: row.created_at
+      };
+    },
+
+    async recordWebhookInbox({ paymentId, provider, webhookId, rawHash, providerReference, merchantTransactionId, providerCode, providerTimestamp, status, details = {} }) {
+      const rows = await run(
+        `insert into ank_pay_sandbox.webhook_inbox(
+           payment_id,provider,webhook_id,raw_hash,provider_reference,merchant_transaction_id,provider_code,provider_timestamp,status,details
+         ) values($1::uuid,$2,$3,$4,$5,$6,$7,$8::timestamptz,$9,$10::jsonb)
+         on conflict(provider,webhook_id) do update set webhook_id=excluded.webhook_id
+         returning *`,
+        [paymentId,provider,webhookId,rawHash,providerReference ?? null,merchantTransactionId ?? null,providerCode ?? null,providerTimestamp ?? null,status ?? null,JSON.stringify(details)]
+      );
+      return rows[0];
+    },
+
     async listEvents(paymentId) {
       return run("select * from ank_pay_sandbox.payment_events where payment_id=$1::uuid order by occurred_at,id", [paymentId]);
     },
@@ -118,6 +164,22 @@ export function createPostgresLedger({ query }) {
     async listEntitlements(paymentId) {
       const rows = await run("select * from ank_pay_sandbox.entitlements where payment_id=$1::uuid order by granted_at,id", [paymentId]);
       return rows.map(camelEntitlement);
+    },
+
+    async listReceipts(paymentId) {
+      const rows = await run("select * from ank_pay_sandbox.proof_receipts where payment_id=$1::uuid order by created_at,id", [paymentId]);
+      return rows.map((row) => ({
+        id: row.id,
+        paymentId: row.payment_id,
+        contentHash: row.content_hash,
+        content: row.content,
+        createdAt: row.created_at
+      }));
+    },
+
+    async reconciliationSnapshot() {
+      const rows = await run("select ank_pay_sandbox.reconciliation_snapshot() as snapshot");
+      return rows[0]?.snapshot ?? { generatedAt: new Date().toISOString(), totals: {}, rows: [] };
     }
   };
 }

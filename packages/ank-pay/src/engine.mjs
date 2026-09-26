@@ -1,5 +1,6 @@
 import { AnkPayError, assertProviderAdapter, paymentIntentFingerprint, validatePaymentIntent } from "./contract.mjs";
 import { createMemoryLedger } from "./ledger-memory.mjs";
+import { createPaymentProofReceipt } from "./receipt.mjs";
 
 function publicPayment(payment, { replayed = false, entitlement = null } = {}) {
   return {
@@ -76,10 +77,17 @@ export function createAnkPay({ provider, ledger = createMemoryLedger() }) {
 
       const verified = await ledger.markVerification(payment.id, result);
       let entitlement = null;
+      let receipt = null;
       if (verified.status === "succeeded") {
         entitlement = await ledger.grantSandboxEntitlement(payment.id);
+        if (typeof ledger.createProofReceipt === "function") {
+          const events = typeof ledger.listEvents === "function" ? await ledger.listEvents(payment.id) : [];
+          receipt = await ledger.createProofReceipt(
+            createPaymentProofReceipt({ payment: verified, events, entitlement, verification: result })
+          );
+        }
       }
-      return publicPayment(verified, { entitlement });
+      return { ...publicPayment(verified, { entitlement }), receipt };
     },
 
     async recordWebhookHint({ paymentId, providerStatus, providerCode = null, providerTimestamp = null }) {
@@ -99,8 +107,55 @@ export function createAnkPay({ provider, ledger = createMemoryLedger() }) {
       return publicPayment(await ledger.getPayment(payment.id));
     },
 
+    async processWebhookHint({ webhookId, rawHash, normalized }) {
+      if (!normalized || typeof normalized !== "object") {
+        throw new AnkPayError("INVALID_WEBHOOK", "Normalized webhook data is required.", { httpStatus: 400 });
+      }
+      if (typeof ledger.findPaymentByProviderIdentity !== "function" || typeof ledger.recordWebhookInbox !== "function") {
+        throw new AnkPayError("WEBHOOK_LEDGER_UNAVAILABLE", "Ledger does not support durable webhook reconciliation.", { httpStatus: 501 });
+      }
+      const payment = await ledger.findPaymentByProviderIdentity({
+        provider: adapter.id,
+        providerReference: normalized.providerReference,
+        merchantTransactionId: normalized.merchantTransactionId
+      });
+      await ledger.recordWebhookInbox({
+        paymentId: payment.id,
+        provider: adapter.id,
+        webhookId,
+        rawHash,
+        providerReference: normalized.providerReference,
+        merchantTransactionId: normalized.merchantTransactionId,
+        providerCode: normalized.providerCode,
+        providerTimestamp: normalized.providerTimestamp,
+        status: normalized.status,
+        details: {
+          notificationType: normalized.notificationType ?? null,
+          paymentBrand: normalized.paymentBrand ?? null,
+          paymentType: normalized.paymentType ?? null,
+          amount: normalized.amount ?? null,
+          currency: normalized.currency ?? null
+        }
+      });
+      await this.recordWebhookHint({
+        paymentId: payment.id,
+        providerStatus: normalized.status,
+        providerCode: normalized.providerCode,
+        providerTimestamp: normalized.providerTimestamp
+      });
+      // Webhook is a hint only. Access can be granted only after this independent provider status query.
+      return this.verifyPayment({ paymentId: payment.id });
+    },
+
     getPayment: (paymentId) => ledger.getPayment(paymentId),
     listEvents: (paymentId) => ledger.listEvents(paymentId),
-    listEntitlements: (paymentId) => ledger.listEntitlements(paymentId)
+    listEntitlements: (paymentId) => ledger.listEntitlements(paymentId),
+    listReceipts: (paymentId) => typeof ledger.listReceipts === "function" ? ledger.listReceipts(paymentId) : [],
+    reconciliationSnapshot: () => {
+      if (typeof ledger.reconciliationSnapshot !== "function") {
+        throw new AnkPayError("RECONCILIATION_UNAVAILABLE", "Ledger does not support reconciliation snapshots.", { httpStatus: 501 });
+      }
+      return ledger.reconciliationSnapshot();
+    }
   });
 }

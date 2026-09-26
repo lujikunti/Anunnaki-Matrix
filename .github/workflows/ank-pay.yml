@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate ANK Pay v0.2 safety boundary
+      - name: Validate ANK Pay v0.3 safety boundary
         run: node tools/validate-ank-pay.mjs
 
   peach-sandbox-e2e:

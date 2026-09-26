@@ -5,6 +5,8 @@ import { createPeachPayShapSandboxAdapter } from "./providers/peach-payshap.mjs"
 export { createAnkPay } from "./engine.mjs";
 export { createMemoryLedger } from "./ledger-memory.mjs";
 export { createPostgresLedger } from "./ledger-postgres.mjs";
+export { createPaymentProofReceipt, verifyPaymentProofReceipt } from "./receipt.mjs";
+export { decryptPeachPaymentsWebhook, verifyPeachCheckoutHmac, normalizePeachWebhook } from "./peach-webhook.mjs";
 
 export function createDefaultSandboxAnkPay(options = {}) {
   return createAnkPay({

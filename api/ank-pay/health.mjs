@@ -6,14 +6,19 @@ export default function handler(_request, response) {
   );
   response.status(200).json({
     service: "ank-pay",
-    version: "0.2.0",
+    version: "0.3.0",
     mode: "sandbox",
     provider: "peach-payshap-sandbox",
     ledgerContract: "postgres-private-schema",
-    settlementRule: "provider-status-query",
+    settlementRule: "authenticated-webhook-hint-plus-provider-status-query",
+    proofReceipt: "ANK.PAY.PROOF.RECEIPT.V1",
+    reconciliation: "private-ledger-snapshot",
+    webhookCrypto: "peach-payments-api-aes-256-gcm",
     entitlementMode: "sandbox-only",
     liveMoney: false,
     apiEnabled: process.env.ANK_PAY_SANDBOX_API_ENABLED === "true",
-    providerConfigured: configured
+    providerConfigured: configured,
+    webhookConfigured: Boolean(process.env.PEACH_SANDBOX_WEBHOOK_SECRET),
+    durableRuntimeConfigured: false
   });
 }
