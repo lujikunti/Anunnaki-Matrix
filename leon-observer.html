@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07090d">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>Observer Door</title>
+<style>
+:root{--ink:#f5f7fb;--muted:#aeb6c5;--line:#2b3340;--panel:#0e131b;--bg:#07090d}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:
+radial-gradient(circle at 15% 10%,rgba(255,255,255,.05),transparent 34%),
+radial-gradient(circle at 85% 85%,rgba(255,255,255,.035),transparent 30%),var(--bg);
+color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(980px,calc(100% - 30px));margin:auto;padding:clamp(34px,7vw,86px) 0 70px}
+.kicker{font:800 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:var(--muted)}
+h1{font-size:clamp(48px,9vw,96px);line-height:.9;letter-spacing:-.055em;margin:18px 0;max-width:780px}
+.lead{font-size:clamp(16px,2.2vw,21px);line-height:1.55;color:var(--muted);max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px}
+.door{min-height:270px;border:1px solid var(--line);background:linear-gradient(160deg,#121824,#0b1017);padding:22px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;transition:transform .15s ease,border-color .15s ease}
+.door:hover,.door:focus-visible{transform:translateY(-3px);border-color:#707b8c;outline:none}
+.num{font:800 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#7f8999}
+.door h2{font-size:clamp(25px,4vw,37px);line-height:.95;letter-spacing:-.035em;margin:16px 0 8px}
+.door p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.open{font:900 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.11em;margin-top:30px}
+.boundary{margin-top:26px;border-top:1px solid var(--line);padding-top:16px;color:#7f8999;font-size:12px;line-height:1.5}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.door{min-height:190px}}
+@media(prefers-reduced-motion:reduce){.door{transition:none}.door:hover{transform:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="kicker">OBSERVER DOOR</div>
+  <h1>No tour.<br>No assignment.</h1>
+  <p class="lead">Explore whatever catches your attention. You are not being asked to approve anything, fix anything, or be polite about it.</p>
+
+  <section class="grid" aria-label="Products">
+    <a class="door" href="https://michael-noah.eltmasafu.workers.dev/">
+      <div><div class="num">01</div><h2>Michael<br>Noah</h2><p>Enter the learning universe and go wherever you want.</p></div>
+      <div class="open">OPEN →</div>
+    </a>
+
+    <a class="door" href="https://the-general-counsel.eltmasafu.workers.dev/">
+      <div><div class="num">02</div><h2>The General<br>Counsel</h2><p>Public product surfaces, tools and legal operating system.</p></div>
+      <div class="open">OPEN →</div>
+    </a>
+
+    <a class="door" href="https://the-general-counsel.eltmasafu.workers.dev/ank-operations.html">
+      <div><div class="num">03</div><h2>ANK<br>Operations</h2><p>Company control-room surface for work, proof, operators and guardrails.</p></div>
+      <div class="open">OPEN →</div>
+    </a>
+  </section>
+
+  <p class="boundary">Protected workspaces may ask you to sign in. That boundary is deliberate. This observer door does not grant admin authority, expose client secrets, or bypass production permissions.</p>
+</main>
+</body>
+</html>
