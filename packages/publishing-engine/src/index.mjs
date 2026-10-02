@@ -59,6 +59,11 @@ export function validateContent(content){
   if(content.workflow_state && !WORKFLOW_STATES.includes(content.workflow_state)) errors.push(`invalid workflow_state ${content.workflow_state}`);
   if(content.publication_date && !validDate(content.publication_date)) errors.push('invalid publication_date');
   if(content.last_reviewed_date && !validDate(content.last_reviewed_date)) errors.push('invalid last_reviewed_date');
+  if(content.editorial_policy && !['REQUIRED','LEGACY_APPROVED'].includes(content.editorial_policy)) errors.push('invalid editorial_policy');
+  if(content.editorial_policy === 'REQUIRED'){
+    if(typeof content.content_hash !== 'string' || !content.content_hash.trim()) errors.push('REQUIRED editorial review needs content_hash');
+    if(!isObject(content.editorial_review)) errors.push('REQUIRED editorial review needs editorial_review receipt');
+  }
   if(!isObject(content.release_status)) errors.push('release_status must be an object');
   else {
     for(const flag of ALL_REQUIRED_RELEASE_FLAGS){
@@ -105,9 +110,83 @@ export function rightsDecision(asset){
   };
 }
 
+const REQUIRED_EDITORIAL_ROLES = Object.freeze({
+  mn: Object.freeze(['EDITOR','CURRICULUM_REVIEWER']),
+  gc: Object.freeze(['EDITOR','LEGAL_REVIEWER'])
+});
+
+/**
+ * Validate a PIE editorial receipt against the exact content version.
+ * This is a deterministic publication check; it does not perform review or release.
+ */
+export function editorialReviewDecision(content){
+  if(!content?.editorial_policy){
+    return {required:false,allowed:true,reason:'EDITORIAL_REVIEW_NOT_REQUIRED_BY_RECORD'};
+  }
+  const receipt=content?.editorial_review;
+  const blockers=[];
+  if(content.editorial_policy === 'LEGACY_APPROVED'){
+    const decision=receipt?.migration_approval;
+    const validMigration=receipt?.status === 'LEGACY_APPROVED' &&
+      typeof receipt?.migration_reference === 'string' && receipt.migration_reference.trim().length>0 &&
+      decision?.actor_type === 'HUMAN' && typeof decision.actor_id === 'string' && decision.actor_id.length>0 &&
+      decision.actor_id !== content?.author_id &&
+      typeof decision.reason === 'string' && decision.reason.trim().length>0 &&
+      decision.role === 'EDITOR' && validDate(decision.approved_at);
+    return {
+      required:true,
+      allowed:validMigration,
+      reason:validMigration?'LEGACY_PUBLICATION_EXCEPTION_AUDITED':'LEGACY_PUBLICATION_EXCEPTION_UNPROVEN',
+      blockers:validMigration?[]:['legacy exception needs a migration reference and independent human editorial approval']
+    };
+  }
+  if(content.editorial_policy !== 'REQUIRED'){
+    return {required:true,allowed:false,reason:'EDITORIAL_POLICY_INVALID',blockers:['unknown editorial policy']};
+  }
+  if(!isObject(receipt)) blockers.push('editorial review receipt missing');
+  if(!content?.content_hash) blockers.push('content hash missing');
+  if(receipt?.status !== 'APPROVED') blockers.push('editorial review is not approved');
+  if(receipt?.content_id !== content?.id) blockers.push('editorial receipt content id mismatch');
+  if(receipt?.version !== content?.version) blockers.push('editorial receipt version mismatch');
+  if(receipt?.content_hash !== content?.content_hash) blockers.push('editorial receipt content hash mismatch');
+  if(receipt?.checks_status !== 'PASS') blockers.push('editorial checks are not all passed');
+  if(receipt?.blocking_findings !== 0) blockers.push('editorial blocking findings remain');
+  if(!receipt?.approved_at || !validDate(receipt.approved_at)) blockers.push('editorial approval timestamp missing or invalid');
+  if(receipt?.editorial_agent_id !== 'ank-editorial') blockers.push('approved receipt not attributed to ank-editorial');
+
+  const requiredRoles=REQUIRED_EDITORIAL_ROLES[content?.product];
+  if(!requiredRoles) blockers.push('editorial review product scope is invalid');
+  const approvals=asArray(receipt?.approvals);
+  const matched=[];
+  for(const role of requiredRoles||[]){
+    const approval=approvals.find(item =>
+      item?.role === role &&
+      item?.approved === true &&
+      item?.actor_type === 'HUMAN' &&
+      item?.actor_id &&
+      item.actor_id !== content?.author_id &&
+      item?.version === content?.version &&
+      item?.content_hash === content?.content_hash
+    );
+    if(!approval) blockers.push('required independent human approval missing: '+role);
+    else matched.push(approval);
+  }
+  if(new Set(matched.map(item=>item.actor_id)).size !== matched.length){
+    blockers.push('editor and domain approvals must come from different humans');
+  }
+  return {
+    required:true,
+    allowed:blockers.length===0,
+    reason:blockers.length===0?'EDITORIAL_REVIEW_VERIFIED':'EDITORIAL_REVIEW_BLOCKED',
+    blockers
+  };
+}
+
 export function publicationGate(content, assetsById = new Map()){
   const check=validateContent(content);
   const blockers=[...check.errors];
+  const editorial=editorialReviewDecision(content);
+  if(!editorial.allowed) blockers.push(...editorial.blockers.map(reason=>'editorial review: '+reason));
   const release=content?.release_status || {};
   for(const flag of ALL_REQUIRED_RELEASE_FLAGS){
     if(release[flag] !== true) blockers.push(`release gate not satisfied: ${flag}`);
@@ -495,4 +574,3 @@ export const BACKUP_RECOVERY_CONTRACT = Object.freeze({
   required:Object.freeze(['database_backup','content_source_backup','asset_backup','release_rollback','restore_procedure','recovery_test']),
   rule:'A production corpus is not considered recoverable until a restore has been tested and evidence retained.'
 });
-

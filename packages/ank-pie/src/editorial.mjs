@@ -126,14 +126,14 @@ export function evaluateEditorialCandidate({
   }
 
   const validApprovals = Array.isArray(requiredApprovals)
-    ? requiredApprovals.filter(required => approvals.some(approval =>
+    ? requiredApprovals.map(required => approvals.find(approval =>
         approval?.approval_type === required.approval_type &&
         approval?.role === required.role &&
         approval?.approved === true &&
         human(approval?.actor) &&
         approval.actor.id !== candidate?.author_id &&
         sameCandidate(approval, candidate)
-      ))
+      )).filter(Boolean)
     : [];
 
   const missingApprovals = Array.isArray(requiredApprovals)
@@ -177,6 +177,24 @@ export function evaluateEditorialCandidate({
     version: candidate.version,
     content_hash: candidate.content_hash,
     status: "APPROVED",
+    editorial_receipt: {
+      status: "APPROVED",
+      content_id: candidate.id,
+      version: candidate.version,
+      content_hash: candidate.content_hash,
+      editorial_agent_id: "ank-editorial",
+      checks_status: "PASS",
+      blocking_findings: 0,
+      approved_at: evaluated_at,
+      approvals: validApprovals.map(approval => ({
+        role: approval.role,
+        actor_type: "HUMAN",
+        actor_id: approval.actor.id,
+        approved: true,
+        version: candidate.version,
+        content_hash: candidate.content_hash
+      }))
+    },
     blockers: [],
     warnings,
     missing_approvals: [],

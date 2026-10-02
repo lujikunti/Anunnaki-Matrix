@@ -36,6 +36,11 @@ const approvals = [
 
 assert.equal(evaluateEditorialCandidate({ candidate, checks, approvals }).status, "APPROVED");
 assert.equal(evaluateEditorialCandidate({ candidate, checks, approvals }).can_publish, false);
+const approvedResult = evaluateEditorialCandidate({ candidate, checks, approvals, evaluated_at: "2026-10-02T04:00:00.000Z" });
+assert.equal(approvedResult.editorial_receipt.content_id, candidate.id);
+assert.equal(approvedResult.editorial_receipt.version, candidate.version);
+assert.equal(approvedResult.editorial_receipt.content_hash, candidate.content_hash);
+assert.deepEqual(approvedResult.editorial_receipt.approvals.map(x => x.role), ["EDITOR", "DOMAIN_REVIEWER"]);
 assert.equal(evaluateEditorialCandidate({ candidate, checks }).status, "READY_FOR_HUMAN_APPROVAL");
 
 assert.equal(

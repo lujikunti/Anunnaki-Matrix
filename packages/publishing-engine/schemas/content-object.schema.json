@@ -19,6 +19,9 @@
     "asset_references": {"type":"array","items":{"type":"string"},"uniqueItems":true},
     "publication_date": {"type":["string","null"],"format":"date"},
     "last_reviewed_date": {"type":["string","null"],"format":"date"},
+    "content_hash": {"type":["string","null"]},
+    "editorial_policy": {"enum":["REQUIRED","LEGACY_APPROVED"]},
+    "editorial_review": {"anyOf":[{"$ref":"editorial-review.schema.json"},{"type":"null"}]},
     "deep_link": {"type":["string","null"]},
     "release_status": {
       "type":"object",
@@ -34,5 +37,11 @@
       "additionalProperties":false
     }
   },
+  "allOf":[
+    {
+      "if":{"properties":{"editorial_policy":{"const":"REQUIRED"}},"required":["editorial_policy"]},
+      "then":{"required":["content_hash","editorial_review"]}
+    }
+  ],
   "additionalProperties":true
 }
