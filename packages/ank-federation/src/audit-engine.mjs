@@ -1,0 +1,10 @@
+import {createHash} from "node:crypto";
+const id=v=>"audit_"+createHash("sha256").update(v).digest("hex").slice(0,24);
+export function runReferenceGovernanceAudit(requestEnvelope){
+ const p=requestEnvelope.payload||{},findings=[];
+ if(!Array.isArray(p.corpus_refs)||p.corpus_refs.length===0)findings.push({code:"CORPUS_NOT_SUPPLIED",severity:"INFO",statement:"No authorised corpus references were supplied with this bounded request.",action:"Supply product-local authorised sources when a substantive source-based conclusion is required."});
+ if(requestEnvelope.authority?.human_approval_required!==true)findings.push({code:"HUMAN_GATE_MISSING",severity:"HIGH",statement:"The request did not preserve a human approval gate.",action:"Require human approval before consequential use."});
+ if(["CONFIDENTIAL","PROFESSIONAL_CONFIDENTIAL","CHILD_PROTECTED"].includes(requestEnvelope.data_classification))findings.push({code:"RESTRICTED_DATA_CLASS",severity:"INFO",statement:"The request carries a restricted data classification.",action:"Keep output inside the requesting product's authorised boundary."});
+ if(p.materiality==="HIGH"||p.materiality==="CRITICAL")findings.push({code:"MATERIALITY_ESCALATION",severity:"HIGH",statement:"The requester classified the work as material.",action:"Return findings as evidence candidates and require local human judgment."});
+ return{audit_id:id(requestEnvelope.correlation_id+"|"+JSON.stringify(p.scope||{})),status:"REFERENCE_GOVERNANCE_AUDIT_COMPLETE",findings,provenance:{source_refs:p.corpus_refs||[],transformations:["federation-contract-validation","signature-verification","reference-governance-audit"],created_at:new Date().toISOString(),engine:"ANK_REFERENCE_GOVERNANCE_AUDIT_V1"},limitations:["This reference engine audits federation governance and evidence boundaries only.","It does not replace the substantive Anunnaki AI Audit engine, legal judgment, assessment judgment or professional review."],processing:{state:"COMPLETE",engine:"ANK_REFERENCE_GOVERNANCE_AUDIT_V1"}};
+}

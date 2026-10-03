@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "ANK_FEDERATION_PRODUCTS_V1",
+  "contract_version": "2026-09-25.2",
+  "products": {
+    "GC": {
+      "base_url": "https://the-general-counsel.vercel.app",
+      "inbound_path": "/api/ank-federation-inbound",
+      "access_token_env": "ANK_FEDERATION_GC_ACCESS_TOKEN",
+      "signing_secret_env": "ANK_FEDERATION_GC_SIGNING_SECRET"
+    },
+    "MN": {
+      "base_url": "https://michael-noah.vercel.app",
+      "inbound_path": "/api/ank-federation-inbound",
+      "access_token_env": "ANK_FEDERATION_MN_ACCESS_TOKEN",
+      "signing_secret_env": "ANK_FEDERATION_MN_SIGNING_SECRET"
+    }
+  },
+  "rules": [
+    "Destination pair credentials are separate.",
+    "Callbacks are signed and replay-checked by the receiving product.",
+    "Teaching arrives as QUARANTINE/VERIFY candidate only."
+  ]
+}
