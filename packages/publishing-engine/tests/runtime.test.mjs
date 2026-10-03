@@ -44,6 +44,13 @@ test('analytics strips sensitive and child-identifying metadata',()=>{
   const event=sanitizeAnalyticsEvent({product:'mn',event_name:'search',resource_id:'library',metadata:{result_count:3,raw_search:'diagnosis',learner_id:'l1',email:'x@example.com'}});
   assert.deepEqual(event.metadata,{result_count:3});
 });
+test('canonical analytics events remain privacy-minimised across products',()=>{
+  const mn=sanitizeAnalyticsEvent({product:'mn',event_name:'diagnostic_completed',resource_id:'grade8-maths',metadata:{grade:'8',subject:'Mathematics',learner_id:'child-1',answer:'private'}});
+  assert.equal(mn.schema_version,'1.1.0');
+  assert.deepEqual(mn.metadata,{grade:'8',subject:'Mathematics'});
+  const gc=sanitizeAnalyticsEvent({product:'gc',event_name:'readiness_completed',resource_id:'meeting',metadata:{scenario:'meeting',matter_id:'m1',client_name:'Example',document_id:'d1'}});
+  assert.deepEqual(gc.metadata,{scenario:'meeting'});
+});
 test('relationship graph rejects orphan edges and product leakage',()=>{
   const graph=buildRelationshipIndex({product:'mn',nodes:[mnContent,gcContent],relationships:[{product:'mn',from:'mn1',to:'missing',type:'related'},{product:'gc',from:'gc1',to:'gc1',type:'related'}]});
   assert.equal(graph.nodes.length,1); assert.equal(graph.valid,false);
