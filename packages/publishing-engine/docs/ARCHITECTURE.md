@@ -54,3 +54,13 @@ These helpers are policy decisions, not substitutes for server/database enforcem
 
 A production corpus is not considered recoverable merely because source control exists. Each product must retain evidence for database backup, source backup, asset backup, release rollback, a documented restore procedure and a tested recovery exercise.
 
+
+
+## PIE Editorial Gate
+
+New MN and GC release candidates should set `editorial_policy: "REQUIRED"` and carry a content hash. The Publishing Engine's `editorialReviewDecision` binds the PIE receipt to the exact content id, version, and hash. It rejects unresolved findings, failed checks, missing reviewers, stale approvals, author self-approval, or one person serving as both editor and product-domain approver.
+
+MN requires an independent `EDITOR` and `CURRICULUM_REVIEWER`. GC requires an independent `EDITOR` and `LEGAL_REVIEWER`. Product server/database policy must write the receipt from trusted review and approval events; clients must not be allowed to author their own approvals.
+
+This gate does not run the document reviewer or publish material. It is the release enforcement point for a separately deployed PIE review worker and product adapters. Existing legacy records may use `LEGACY_APPROVED` only through an auditable migration decision; new or materially changed candidates must use `REQUIRED`.
+

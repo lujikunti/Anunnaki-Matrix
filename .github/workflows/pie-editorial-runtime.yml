@@ -1,0 +1,24 @@
+name: PIE Editorial Runtime
+
+on:
+  pull_request:
+    paths:
+      - 'services/pie-editorial-runtime/**'
+      - '.github/workflows/pie-editorial-runtime.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'services/pie-editorial-runtime/**'
+      - '.github/workflows/pie-editorial-runtime.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Test PIE editorial runtime
+        working-directory: services/pie-editorial-runtime
+        run: npm test

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2a">
+  <title>PIE Editorial Desk</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="PIE Editorial Desk home"><span class="brand-mark">P</span><span>PIE <small>EDITORIAL DESK</small></span></a>
+    <div class="topbar-note"><span class="status-dot"></span> PRE-PUBLICATION REVIEW</div>
+  </header>
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">ANK · PUBLISHING INTEGRITY ENGINE</p>
+      <h1>Read it before it goes out.</h1>
+      <p class="lede">PIE reads an approved publication draft, flags issues, and suggests anchored redlines. A human editor still decides what changes and whether it can be released.</p>
+    </section>
+    <section class="privacy-note" aria-label="Review boundary">
+      <span class="shield" aria-hidden="true">◆</span>
+      <p><strong>Submit publication drafts only.</strong> Do not submit learner records, client-confidential or privileged material, private correspondence, or anything without verified rights. Draft text is sent to the configured PIE service for review.</p>
+    </section>
+    <section class="workspace" aria-label="Editorial review workspace">
+      <form id="review-form" class="draft-panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / CANDIDATE</p><h2>Prepare a draft</h2></div><span class="step-mark">01</span></div>
+        <div class="field-grid">
+          <label>Product
+            <select id="product" required><option value="mn">Michael Noah (MN)</option><option value="gc">General Counsel (GC)</option></select>
+          </label>
+          <label>Version
+            <input id="version" value="v1" maxlength="200" required>
+          </label>
+        </div>
+        <label>Candidate name
+          <input id="candidate-name" placeholder="For example: Grade 8 Kiswahili workbook" maxlength="200" required>
+        </label>
+        <label class="file-control">Open a Markdown or text file <input id="draft-file" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown"></label>
+        <label for="draft-text">Draft text</label>
+        <textarea id="draft-text" rows="15" placeholder="Paste the publication draft here. Blank lines create review sections with stable anchors." required></textarea>
+        <div class="draft-meta"><span id="word-count">0 words</span><span id="section-count">0 sections</span></div>
+        <label class="rights-check"><input id="rights-check" type="checkbox"><span>I have verified that this draft is cleared for the intended use and contains no private or privileged source material.</span></label>
+        <div class="token-row">
+          <label for="access-token">PIE access token</label>
+          <input id="access-token" type="password" autocomplete="off" placeholder="Provided by your PIE administrator" required>
+          <span class="field-hint">Held in this page only; cleared when you leave.</span>
+        </div>
+        <button id="review-button" class="primary-button" type="submit"><span>Review this draft</span><span aria-hidden="true">↗</span></button>
+        <p class="form-footnote">Reviewing does not approve or publish. Your original draft stays unchanged.</p>
+      </form>
+      <section class="results-panel" aria-live="polite" aria-busy="false">
+        <div class="panel-heading"><div><p class="eyebrow">02 / REDLINES</p><h2>Review findings</h2></div><span class="step-mark">02</span></div>
+        <div id="empty-state" class="empty-state"><div class="empty-illustration" aria-hidden="true"><span>¶</span><i></i><i></i><i></i></div><h3>Your review will appear here.</h3><p>Each finding will point to a section and include the issue, suggested redline, and reason.</p></div>
+        <div id="review-output" hidden></div>
+      </section>
+    </section>
+    <footer><span>ANK PIE · EDITORIAL AUTHORITY: DRAFT</span><span>HUMAN REVIEW REQUIRED · NO RELEASE ACTION</span></footer>
+  </main>
+</body>
+</html>

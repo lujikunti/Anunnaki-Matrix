@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anunnaki.live/schemas/publishing/editorial-review-v1.json",
+  "title": "ANK PIE Editorial Review Receipt V1",
+  "type": "object",
+  "oneOf": [
+    {
+      "required": ["status", "content_id", "version", "content_hash", "editorial_agent_id", "checks_status", "blocking_findings", "approved_at", "approvals"],
+      "properties": {
+        "status": { "const": "APPROVED" },
+        "content_id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "content_hash": { "type": "string", "minLength": 1 },
+        "editorial_agent_id": { "const": "ank-editorial" },
+        "checks_status": { "const": "PASS" },
+        "blocking_findings": { "const": 0 },
+        "approved_at": { "type": "string", "format": "date-time" },
+        "approvals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["role", "actor_type", "actor_id", "approved", "version", "content_hash"],
+            "properties": {
+              "role": { "enum": ["EDITOR", "LEGAL_REVIEWER", "CURRICULUM_REVIEWER"] },
+              "actor_type": { "const": "HUMAN" },
+              "actor_id": { "type": "string", "minLength": 1 },
+              "approved": { "const": true },
+              "version": { "type": "string", "minLength": 1 },
+              "content_hash": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "minItems": 2
+        }
+      }
+    },
+    {
+      "required": ["status", "migration_reference", "migration_approval"],
+      "properties": {
+        "status": { "const": "LEGACY_APPROVED" },
+        "migration_reference": { "type": "string", "minLength": 1 },
+        "migration_approval": {
+          "type": "object",
+          "required": ["actor_type", "actor_id", "role", "reason", "approved_at"],
+          "properties": {
+            "actor_type": { "const": "HUMAN" },
+            "actor_id": { "type": "string", "minLength": 1 },
+            "role": { "const": "EDITOR" },
+            "reason": { "type": "string", "minLength": 1 },
+            "approved_at": { "type": "string", "format": "date-time" }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
+

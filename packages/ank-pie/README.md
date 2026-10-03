@@ -48,3 +48,16 @@ The registry intentionally marks the South African March 2026 draft AI policy as
 ### Red-team gate
 
 `npm test` now attacks the governance layer for self-promotion, self-permission expansion, same-agent proposal/approval, acting above a natal Mars ceiling, bypassing a kill switch, unlicensed standards harvesting, assuming Malabo Convention applicability without jurisdiction verification, and treating withdrawn policy as current authority.
+
+
+## PIE Editorial Gate
+
+`agents/ank-editorial-v1.json` defines the Editorial agent's DRAFT-level authority and human gates. `src/editorial.mjs` evaluates rights, version-bound checks, findings, and human approvals; it never performs publication. It is the first governed core for the Editor, not a deployed document-review runtime or content connector.
+
+The gate fails closed if rights or checks are unverified, P0/P1 issues are unresolved, approvals are absent or stale, or the review profile lacks a human approver.
+
+Run the focused gate checks with:
+
+```bash
+node tests/validate-editorial-gate.mjs
+```
