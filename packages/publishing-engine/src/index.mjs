@@ -440,8 +440,13 @@ export function commerceEntitlementDecision({receipt, policy, existing_entitleme
   };
 }
 
-const ANALYTICS_EVENTS=new Set(['library_opened','search','content_viewed','content_completed','error','access_denied','entitlement_converted','return_visit']);
-const SENSITIVE_ANALYTICS_KEY=/(name|email|phone|address|token|authorization|cookie|password|secret|card|health|medical|message|note|free.?text|raw.?search|query.?text)/i;
+const ANALYTICS_EVENTS=new Set([
+  'library_opened','search','content_viewed','content_completed','error','access_denied','entitlement_converted','return_visit',
+  'intent_started','intent_completed','readiness_started','readiness_completed','diagnostic_started','diagnostic_completed',
+  'proof_submitted','proof_evaluated','content_opened','checkout_started','subscription_activated','subscription_ended',
+  'verification_failed','error_observed'
+]);
+const SENSITIVE_ANALYTICS_KEY=/(name|email|phone|address|token|authorization|cookie|password|secret|card|health|medical|message|note|free.?text|raw.?search|query.?text|prompt|answer|response|submission|matter|client|document|learner|household)/i;
 
 export function sanitizeAnalyticsEvent({product,event_name,resource_id=null,metadata={}}){
   if(!PRODUCTS.includes(product)) throw new Error('valid product required');
@@ -456,7 +461,13 @@ export function sanitizeAnalyticsEvent({product,event_name,resource_id=null,meta
     delete safe.learner_id;
     delete safe.household_id;
   }
-  return {schema_version:'1.0.0',product,event_name,resource_id,metadata:safe};
+  if(product==='gc'){
+    delete safe.matter_id;
+    delete safe.client_id;
+    delete safe.document_id;
+    delete safe.matter_ref;
+  }
+  return {schema_version:'1.1.0',product,event_name,resource_id,metadata:safe};
 }
 
 export function buildRelationshipIndex({nodes=[],relationships=[],product}){
