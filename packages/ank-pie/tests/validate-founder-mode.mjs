@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import {detectIntentContradictions,buildFounderProposal,adoptMission,routeDeviation,evaluateHomeostasis} from '../src/founder-mode.mjs';
+import {buildProjectTwin,assessProjectTwin,detectIntentContradictions,buildFounderProposal,adoptMission,routeDeviation,evaluateHomeostasis} from '../src/founder-mode.mjs';
 
 const read=p=>JSON.parse(fs.readFileSync(new URL(p,import.meta.url),'utf8'));
 const fail=m=>{throw new Error('ANK PIE Founder Mode QA: '+m)};
@@ -10,6 +10,17 @@ if(policy.founder_rule!=='THE_FOUNDER_IS_NOT_COMPANY_MIDDLEWARE')fail('founder r
 for(const s of ['OBSERVE','UNDERSTAND','PROPOSE','AGREE','TAKE_OWNERSHIP','BUILD','RED_TEAM','VERIFY','RELEASE','HOMEOSTASIS'])
   if(!policy.canonical_loop.includes(s))fail('missing loop state '+s);
 if(policy.default_authority_envelope.permission_change!=='DENY_SELF_CHANGE')fail('self permission guard missing');
+
+const twin=buildProjectTwin({
+  project_key:'mn.release',
+  observed_intent:'Ship approved learner value without parked promotions.',
+  observed_reality:{release_pr:577},
+  locked_decisions:[{key:'mn.founding100',state:'PARKED'}],
+  evidence:['github:pr-577'],
+  contradictions:[{key:'mn.founding100',severity:'IMPORTANT'}],
+  confidence:0.95
+});
+if(assessProjectTwin(twin).reason!=='INTENT_DRIFT')fail('project twin did not surface intent drift');
 
 const contradictions=detectIntentContradictions({
   lockedDecisions:[{key:'mn.founding100',state:'PARKED',evidence_refs:['founder:decision']}],
