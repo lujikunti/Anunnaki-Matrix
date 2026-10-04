@@ -19,6 +19,7 @@
   "founder_rule": "THE_FOUNDER_IS_NOT_COMPANY_MIDDLEWARE",
   "principles": [
     "PIE_MAY_OBSERVE_WITHOUT_A_FOUNDER_PROMPT",
+    "EVERY_ACTIVE_PROJECT_HAS_A_DURABLE_PROJECT_TWIN",
     "PIE_MUST_SEPARATE_FACTS_ASSUMPTIONS_INFERENCES_AND_PROPOSALS",
     "PIE_MUST_PROPOSE_BEFORE_ADOPTING_A_NEW_MISSION",
     "FOUNDER_ACCEPTANCE_CREATES_A_MISSION_CHARTER_NOT_NEW_RUNTIME_AUTHORITY",
@@ -118,5 +119,16 @@
     "CONTINUE_BUILDING_AFTER_LOCKED_FOUNDER_DECISION_CONTRADICTS_CURRENT_SCOPE",
     "DECLARE_HOMEOSTASIS_WHEN_OBSERVABILITY_IS_MISSING",
     "EXPAND_AUTHORITY_BECAUSE_A_MISSION_CHARTER_WAS_ACCEPTED"
+  ],
+  "project_twin_required_fields": [
+    "project_key",
+    "observed_intent",
+    "observed_reality",
+    "locked_decisions",
+    "dependencies",
+    "evidence",
+    "contradictions",
+    "confidence",
+    "last_observed_at"
   ]
 }
