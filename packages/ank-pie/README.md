@@ -48,3 +48,14 @@ The registry intentionally marks the South African March 2026 draft AI policy as
 ### Red-team gate
 
 `npm test` now attacks the governance layer for self-promotion, self-permission expansion, same-agent proposal/approval, acting above a natal Mars ceiling, bypassing a kill switch, unlicensed standards harvesting, assuming Malabo Convention applicability without jurisdiction verification, and treating withdrawn policy as current authority.
+
+
+## PIE Founder Mode
+
+`governance/founder-mode-v1.json` adds the portfolio ownership loop above the existing governed-agent runtime:
+
+`OBSERVE → UNDERSTAND → PROPOSE → AGREE → TAKE OWNERSHIP → BUILD → RED TEAM → VERIFY → RELEASE → HOMEOSTASIS`
+
+Founder acceptance creates a mission charter, not new permissions. PIE may own decomposition, sequencing, reversible execution, repair and proof only inside the authority it already has. Production release, external communications, publication, destructive changes, protected decisions and other configured human gates remain intact.
+
+The Founder surface is designed around four queues: **PIE THINKS**, **PIE OWNS**, **PIE NEEDS YOU**, and **HOMEOSTASIS**. Trial 001 is recorded in `training/founder-mode-trial-001.json`.

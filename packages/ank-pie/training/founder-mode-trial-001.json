@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "trial_id": "PIE_FOUNDER_MODE_TRIAL_001",
+  "date": "2026-10-04",
+  "status": "FOUNDER_ACCEPTED_BUILD_IN_PROGRESS",
+  "mission": "Take ownership of the MN + GC free-launch programme, reconcile founder intent with repository state, carry agreed scope to verified release state through existing gates, then maintain homeostasis.",
+  "founder_acceptance": "Proceed",
+  "observed_projects": [
+    {
+      "product": "MN",
+      "repository": "lujikunti/Michael-Noah",
+      "reference": "PR #577",
+      "known_scope": [
+        "Holiday Exam Rescue",
+        "Founding 100",
+        "Move Lab"
+      ]
+    },
+    {
+      "product": "GC",
+      "repository": "lujikunti/the-general-counsel",
+      "reference": "PR #184",
+      "known_scope": [
+        "AI-Assisted Legal Work — Governance RED Note (South Africa)"
+      ]
+    }
+  ],
+  "locked_decisions": [
+    {
+      "key": "mn.founding100",
+      "state": "PARKED",
+      "source": "founder decision in active project context"
+    }
+  ],
+  "contradictions": [
+    {
+      "key": "mn.founding100",
+      "locked_state": "PARKED",
+      "observed_state": "IN_RELEASE",
+      "severity": "IMPORTANT",
+      "recommended_action": "Remove Founding 100 from the active launch scope while preserving implementation for future testing unless the founder explicitly reverses the parked decision."
+    }
+  ],
+  "definition_of_done": [
+    "Current repository/release state re-verified before action.",
+    "Locked founder intent and launch scope no longer contradict each other.",
+    "Build and release QA evidence exists for retained scope.",
+    "No existing production, publication, external-message, safety or legal human gate is bypassed.",
+    "Released scope enters an explicit homeostasis contract with observable health and repair routing."
+  ],
+  "authority_envelope": {
+    "max_action_level": "EXECUTE_REVERSIBLE",
+    "production_release": "EXISTING_PRODUCT_GATE",
+    "external_communication": "HUMAN_GATE",
+    "public_publication": "HUMAN_GATE",
+    "destructive_change": "HUMAN_GATE"
+  }
+}
