@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#020f22"><title>Handoff | Anunnaki Matrix</title>
+<style>
+:root{--navy:#020f22;--gold:#d8b45b;--blue:#49bff4;--white:#f7f8fb;--muted:#a9b7ca;--line:rgba(216,180,91,.28);--red:#d97168}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 12%,#0a3154 0,#061a32 25%,var(--navy) 58%);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+.wrap{width:min(980px,90%);margin:auto}nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}a{color:inherit}.brand{letter-spacing:.25em;font-weight:650;font-size:.88rem;text-decoration:none}.brand span,.k{color:var(--gold)}
+.hero{display:grid;grid-template-columns:1fr .8fr;gap:5vw;align-items:center;padding:70px 0 35px}.hero h1{font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.055em;margin:.25em 0}.hero p{color:var(--muted);max-width:650px}.visual{border:1px solid var(--line);padding:20px}.visual svg{width:100%;height:auto;stroke:var(--white);fill:none;stroke-width:1.5}.visual .gold{stroke:var(--gold);stroke-width:2.4}.visual .blue{stroke:var(--blue);stroke-width:2}
+.panel{border:1px solid var(--line);background:rgba(255,255,255,.018);padding:18px;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}.metric{border:1px solid var(--line);padding:11px;min-height:82px}.metric span{display:block;color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em}.metric b{display:block;margin-top:8px;font-size:1rem}.owner{border-left:4px solid var(--gold);background:rgba(216,180,91,.05);padding:12px;margin-top:10px;font-weight:750}
+.events{display:grid;gap:7px;margin-top:10px}.event{display:grid;grid-template-columns:36px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);padding:10px;background:rgba(255,255,255,.012)}.dot{width:28px;height:28px;border:1px solid var(--blue);color:var(--blue);border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800}.event b{font-size:.85rem}.event small{display:block;color:var(--muted);margin-top:2px}.event time{color:var(--muted);font-size:.72rem}
+.status{border-left:4px solid var(--gold);background:rgba(255,255,255,.035);padding:11px 13px;color:#c8d4e2}.status.error{border-color:var(--red)}[hidden]{display:none!important}
+footer{padding:35px 0 60px;color:var(--muted);font-size:.8rem}
+@media(max-width:720px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.event{grid-template-columns:32px 1fr}.event time{grid-column:2}}
+</style>
+</head>
+<body>
+<header class="wrap"><nav><a class="brand" href="/">ANUNNAKI <span>MATRIX</span></a><a href="/">Home</a></nav></header>
+<main class="wrap">
+<section class="hero">
+ <div><div class="k">ANK · PROFESSIONAL HANDOFF</div><h1>Who has<br>the next<br>move?</h1><p>This receipt shows only the shared handoff state: where the introduction started, who owns the next action and what status has been recorded.</p></div>
+ <div class="visual"><svg viewBox="0 0 340 280" aria-hidden="true"><path d="M38 225V65h90v160M212 225V43h90v182M38 225h264M128 146h84"/><circle cx="170" cy="146" r="42"/><path class="gold" d="M149 129l21 17 21-17M149 163l21-17 21 17"/><path class="blue" d="M128 146h84"/></svg></div>
+</section>
+<div id="state" class="status">Opening the handoff receipt…</div>
+<section id="content" hidden>
+ <section class="panel"><div class="k">HANDOFF RECEIPT</div><div class="grid">
+  <article class="metric"><span>Reference</span><b id="ref">—</b></article>
+  <article class="metric"><span>Company</span><b id="company">—</b></article>
+  <article class="metric"><span>Route</span><b id="route">—</b></article>
+  <article class="metric"><span>Status</span><b id="statusText">—</b></article>
+ </div><div id="owner" class="owner">CURRENT OWNER · —</div></section>
+ <section class="panel"><div class="k">SHARED TIMELINE</div><div id="events" class="events"></div></section>
+</section>
+</main>
+<footer><div class="wrap">The timeline excludes internal reviewer notes and underlying client material.</div></footer>
+<script>
+const END='https://tofojlyfitqgophbyzyc.supabase.co/functions/v1/ank-partner-referral';
+const q=new URLSearchParams(location.search),reference=(q.get('ref')||'').trim(),token=(q.get('token')||'').trim();
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const state=document.getElementById('state');const label=p=>p==='GC'?'THE GENERAL COUNSEL':p==='ANUNNAKI'?'ANUNNAKI':p;
+async function load(){
+ if(!reference||!token){state.textContent='This handoff link is incomplete.';state.className='status error';return}
+ try{
+  const r=await fetch(END,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'timeline',reference,tracking_token:token})}),d=await r.json().catch(()=>({}));
+  if(!r.ok||!d.ok)throw new Error('Handoff receipt not found or the private tracking token is invalid.');
+  const h=d.handoff;document.getElementById('ref').textContent=h.reference;document.getElementById('company').textContent=h.company_name;document.getElementById('route').textContent=label(h.source_product)+' → '+label(h.target_product);document.getElementById('statusText').textContent=String(h.status||'NEW').replaceAll('_',' ');
+  document.getElementById('owner').textContent=h.current_owner==='CLOSED'?'HANDOFF CLOSED':'CURRENT OWNER · '+label(h.current_owner||h.target_product);
+  document.getElementById('events').innerHTML=(h.timeline||[]).map((e,i)=>'<article class="event"><span class="dot">'+(i+1)+'</span><div><b>'+esc(e.label)+'</b><small>'+esc(label(e.actor_product))+'</small></div><time>'+esc(new Date(e.created_at).toLocaleString())+'</time></article>').join('')||'<div class="status">No handoff events recorded yet.</div>';
+  state.hidden=true;document.getElementById('content').hidden=false;
+ }catch(e){state.textContent=e.message;state.className='status error'}
+}
+load();
+</script>
+</body></html>

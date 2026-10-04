@@ -66,16 +66,19 @@ footer{padding:40px 0;color:var(--muted);font-size:.82rem;border-top:1px solid v
 <footer><div class="wrap">© 2026 Anunnaki Matrix (Pty) Ltd · Professional referrals preserve source, purpose and consent.</div></footer>
 <script>
 const URL='https://tofojlyfitqgophbyzyc.supabase.co/functions/v1/ank-partner-referral';
+const signalId=(new URLSearchParams(location.search).get('signal')||'').trim();
 const f=document.getElementById('referralForm'),status=document.getElementById('status'),submit=document.getElementById('submit');
+if(signalId)status.textContent='Anunnaki surfaced this GC door because governed work hit a professional boundary. Nothing is shared until you approve the handover.';
 const show=(m,k='')=>{status.textContent=m;status.className='status wide '+k};
 f.addEventListener('submit',async e=>{
  e.preventDefault();submit.disabled=true;show('Preparing the approved referral pack…');
  try{
   const fd=new FormData(f),outcomes=[...f.querySelectorAll('input[name="outcome"]:checked')].map(x=>x.value),need=String(fd.get('legal_need')||'').trim();
-  const payload={action:'submit',founder_name:fd.get('founder_name'),founder_email:fd.get('founder_email'),company_name:fd.get('company_name'),jurisdiction:fd.get('jurisdiction'),company_stage:fd.get('company_stage'),requested_outcomes:outcomes,approved_context:{legal_need:need},consent:true,non_confidential_confirmed:true,consent_scope:'Founder authorises Anunnaki to share only the visible non-confidential referral pack with The General Counsel for a professional introduction.',source_url:location.href,source_ref:'ANUNNAKI_GC_REFERRAL',website:fd.get('website')};
+  const payload={action:'submit',founder_name:fd.get('founder_name'),founder_email:fd.get('founder_email'),company_name:fd.get('company_name'),jurisdiction:fd.get('jurisdiction'),company_stage:fd.get('company_stage'),requested_outcomes:outcomes,approved_context:{legal_need:need},consent:true,non_confidential_confirmed:true,consent_scope:'Founder authorises Anunnaki to share only the visible non-confidential referral pack with The General Counsel for a professional introduction.',source_url:location.href,source_ref:'ANUNNAKI_GC_REFERRAL',handoff_signal_id:signalId||null,website:fd.get('website')};
   const r=await fetch(URL,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}),d=await r.json().catch(()=>({}));
   if(!r.ok||!d.ok)throw new Error(d.error||'Referral could not be recorded.');
   show('Introduction recorded: '+d.reference+'. '+d.next_step,'ok');
+  if(d.tracking?.path){const a=document.createElement('a');a.className='btn';a.href=d.tracking.path;a.textContent='OPEN SHARED HANDOFF TIMELINE →';a.style.marginTop='8px';status.appendChild(document.createElement('br'));status.appendChild(a)}
  }catch(err){show('Could not complete the introduction: '+(err?.message||String(err)),'error')}
  finally{submit.disabled=false}
 });
