@@ -1,3 +1,34 @@
+export function buildProjectTwin(input={}){
+  const required=['project_key','observed_intent','observed_reality','evidence'];
+  for(const k of required) if(input[k]===undefined || input[k]===null || (Array.isArray(input[k])&&input[k].length===0)) throw new Error('project_twin_missing_'+k);
+  const confidence=Number(input.confidence??0.5);
+  if(!Number.isFinite(confidence)||confidence<0||confidence>1) throw new Error('project_twin_invalid_confidence');
+  return {
+    project_key:input.project_key,
+    observed_intent:input.observed_intent,
+    observed_reality:input.observed_reality,
+    locked_decisions:input.locked_decisions||[],
+    dependencies:input.dependencies||[],
+    evidence:input.evidence,
+    contradictions:input.contradictions||[],
+    confidence,
+    health_state:input.health_state||'UNKNOWN',
+    last_observed_at:input.last_observed_at||null
+  };
+}
+
+export function assessProjectTwin(twin={}){
+  const contradictions=Array.isArray(twin.contradictions)?twin.contradictions:[];
+  const dependencies=Array.isArray(twin.dependencies)?twin.dependencies:[];
+  const critical=contradictions.some(x=>String(x.severity||'').toUpperCase()==='CRITICAL');
+  const blocked=dependencies.some(x=>['BLOCKED','MISSING','FAILED'].includes(String(x.state||'').toUpperCase()));
+  const confidence=Number(twin.confidence??0);
+  return {
+    needs_proposal:critical||blocked||contradictions.length>0||confidence<0.7,
+    reason:critical?'CRITICAL_CONTRADICTION':blocked?'BLOCKED_DEPENDENCY':contradictions.length?'INTENT_DRIFT':confidence<0.7?'LOW_CONFIDENCE':'NOMINAL'
+  };
+}
+
 const ORDER={READ:0,RECOMMEND:1,DRAFT:2,EXECUTE_REVERSIBLE:3,EXECUTE_CONSEQUENTIAL:4};
 
 export function detectIntentContradictions({lockedDecisions=[],observedCommitments=[]}={}){
