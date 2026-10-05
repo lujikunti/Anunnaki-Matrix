@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "policy_id": "ANK_PIE_FOUNDER_MODE_V1",
-  "policy_version": "2026-10-04.1",
+  "policy_version": "2026-10-05.1",
   "status": "CONTROLLED_PILOT",
   "purpose": "Allow PIE to observe active ANK products, infer likely founder intent, propose a better course, adopt an agreed mission charter, execute within existing authority, independently verify completion, and maintain post-release homeostasis while escalating only genuine founder decisions.",
   "canonical_loop": [
@@ -130,5 +130,185 @@
     "contradictions",
     "confidence",
     "last_observed_at"
+  ],
+  "portfolio_scope": [
+    "MICHAEL_NOAH",
+    "THE_GENERAL_COUNSEL"
+  ],
+  "executive_operating_team": {
+    "PIE_PORTFOLIO_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "portfolio sequencing",
+        "cross-product conflicts",
+        "shared infrastructure",
+        "readiness reporting",
+        "launch blocker escalation"
+      ],
+      "founder_reporting": "EXCEPTIONS_DECISIONS_RISKS_AND_COMPLETED_OUTCOMES_ONLY",
+      "absorbs": "PROGRAMME_AND_PROJECT_MANAGEMENT"
+    },
+    "PIE_PRODUCT_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "product coherence",
+        "scope",
+        "feature consolidation",
+        "journeys",
+        "keep-redesign-consolidate-redirect-archive decisions"
+      ]
+    },
+    "PIE_EXPERIENCE_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "UI",
+        "UX",
+        "information architecture",
+        "navigation",
+        "responsive behaviour",
+        "accessibility",
+        "visual hierarchy",
+        "design-system compliance"
+      ],
+      "authority": [
+        "rearrange screens",
+        "remove or add tabs",
+        "consolidate pages",
+        "rebuild weak experiences"
+      ],
+      "rule": "REDESIGN_THE_EXPERIENCE_NOT_MERELY_BEAUTIFY_THE_PAGE"
+    },
+    "PIE_ENGINEERING_PLATFORM_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "frontend",
+        "backend",
+        "auth",
+        "payments",
+        "data",
+        "APIs",
+        "domains",
+        "deployments",
+        "performance",
+        "security",
+        "app-store readiness",
+        "technical debt"
+      ]
+    },
+    "PIE_KNOWLEDGE_CONTENT_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "source integrity",
+        "content correctness",
+        "duplication control"
+      ],
+      "mn": [
+        "curriculum integrity",
+        "learning paths",
+        "Green Notes",
+        "labs",
+        "books",
+        "languages",
+        "developmental appropriateness"
+      ],
+      "gc": [
+        "legal and professional knowledge",
+        "jurisdictions",
+        "contracts",
+        "standards",
+        "readiness rooms",
+        "drafting quality"
+      ]
+    },
+    "PIE_QUALITY_RED_TEAM_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "functional QA",
+        "visual QA",
+        "mobile QA",
+        "links",
+        "permissions",
+        "payments",
+        "empty states",
+        "error states",
+        "edge cases",
+        "Observer"
+      ],
+      "rule": "NOTHING_IS_COMPLETE_BECAUSE_IT_RENDERS"
+    },
+    "PIE_COMMERCIAL_LAUNCH_DIRECTOR": {
+      "scope": "MN + GC",
+      "owns": [
+        "visitor-to-value journey",
+        "free-to-paid boundary",
+        "Paddle",
+        "onboarding",
+        "pricing",
+        "investor material",
+        "upgrade journeys",
+        "launch analytics",
+        "commercial blockers"
+      ]
+    }
+  },
+  "shared_execution_cycle": [
+    "DISCOVER_ALL_REACHABLE_ROUTES",
+    "CLASSIFY_BY_JOB_AUDIENCE_STATE_DUPLICATION_AND_CANONICAL_DESTINATION",
+    "EXPERIENCE_AUDIT",
+    "PRODUCT_DECISION_KEEP_REDESIGN_CONSOLIDATE_REDIRECT_ARCHIVE",
+    "KNOWLEDGE_AUDIT",
+    "IMPLEMENT",
+    "INDEPENDENT_RED_TEAM",
+    "COMMERCIAL_TEST",
+    "EVIDENCE_GATE",
+    "PRODUCT_APPROVAL",
+    "HOMEOSTASIS"
+  ],
+  "product_experience_contracts": {
+    "MICHAEL_NOAH": {
+      "visual_rule": "TARGET_90_PERCENT_VISUAL_10_PERCENT_WORDS_WITHOUT_CLUTTER",
+      "visuals": "ORIGINAL_MN_ONLY_NO_STOCK_OR_GENERIC",
+      "page_rule": "ONE_PAGE_ONE_CLEAR_JOB",
+      "navigation": "MOBILE_FIRST_NO_HUNTING",
+      "architecture": "CONSOLIDATE_AGGRESSIVELY",
+      "exploration": "FREE_WINDOW_SHOPPING_REVEALS_PRODUCT_BREADTH",
+      "tests": [
+        "COULD_MIKE_UNDERSTAND_WHAT_TO_DO_WITHOUT_FOUNDER_EXPLANATION",
+        "COULD_NOAH_REACH_THE_GOAL_QUICKLY_WITHOUT_UNNECESSARY_STEPS"
+      ]
+    },
+    "THE_GENERAL_COUNSEL": {
+      "experience_rule": "SITUATION_FIRST_PROFESSIONAL_READINESS",
+      "visual_rule": "APPROVED_GC_CONSTRUCTION_NOTES_AND_PROFESSIONAL_FIELD_BOOK_SYSTEM",
+      "standards": "AFRICAN_STANDARDS_AND_JURISDICTIONS_FIRST_CLASS",
+      "navigation": "SURFACE_RIGHT_ROOM_OR_ACTION_FROM_INTENT",
+      "test": "CAN_A_PROFESSIONAL_ENTER_WITH_A_REAL_PROBLEM_AND_BECOME_MEETING_ADVICE_DRAFTING_OR_ACTION_READY_WITHOUT_NAVIGATING_A_KNOWLEDGE_LIBRARY"
+    }
+  },
+  "route_approval_gates": [
+    "PRODUCT_FIT",
+    "UX_INFORMATION_ARCHITECTURE",
+    "VISUAL_DESIGN",
+    "RESPONSIVE_MOBILE",
+    "ACCESSIBILITY",
+    "FUNCTIONAL_QA",
+    "KNOWLEDGE_CONTENT",
+    "COMMERCIAL_JOURNEY_WHERE_APPLICABLE",
+    "ERROR_AND_EMPTY_STATES",
+    "EVIDENCE_CAPTURED"
+  ],
+  "founder_dashboard_counters": [
+    "PAGES_DISCOVERED",
+    "PAGES_AUDITED",
+    "PAGES_REDESIGNED",
+    "QA_PASSED",
+    "PRODUCT_APPROVED",
+    "TEN_NINETY_VIOLATIONS",
+    "GENERIC_OR_INCORRECT_VISUALS",
+    "NAVIGATION_FAILURES",
+    "MOBILE_FAILURES",
+    "BROKEN_FLOWS_OR_LINKS",
+    "COMMERCIAL_BLOCKERS",
+    "LAUNCH_BLOCKERS"
   ]
 }
